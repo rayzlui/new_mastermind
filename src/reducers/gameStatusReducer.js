@@ -1,9 +1,9 @@
-import {GAME_WON, GAME_LOST, VERSUS_COMPUTER, VERSUS_PLAYER} from '../actions/actionTypes'
+import {GAME_WON, GAME_LOST, VERSUS_COMPUTER, START_PLAYER} from '../actions/actionTypes'
 
 export function gameStatusReducer(state = false, action){
   switch (action.type){
     case VERSUS_COMPUTER:
-      case VERSUS_PLAYER:
+      case START_PLAYER:
       return true
       case GAME_WON:
         case GAME_LOST:

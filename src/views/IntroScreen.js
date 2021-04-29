@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 
 export function IntroScreen(props){
-  let {selectDifficulty, selectComputer, quickPlay} = props
-  let [codeLength, lengthChange ] = useState()
-  let [optionsLength, optionsChange] = useState()
-  let [turnsLength, turnsChange] = useState()
+  let {vsPlayer, vsComputer, quickPlay} = props
+  let [codeLength, lengthChange ] = useState(4)
+  let [optionsLength, optionsChange] = useState(7)
+  let [turnsLength, turnsChange] = useState(10)
   return(
     <>
       <h1>Welcome</h1>
@@ -20,7 +20,7 @@ export function IntroScreen(props){
       <label>Number Of Turns</label>
       <input onChange={event => turnsChange(event.target.value)} type='range' class='slider' min='4' max='20' value={turnsLength} id='turns_length'></input>
       <input onChange={event => turnsChange(event.target.value)} type='number' value={turnsLength} min='4' max='20'></input>
-      <button>Start Game!</button>
+      <button onClick={() => vsComputer([codeLength, optionsLength, turnsLength])}>Play Versus Computer</button><button onClick={() => vsPlayer([codeLength, optionsLength, turnsLength])}>Play Versus Player</button>
     </>
 
   )

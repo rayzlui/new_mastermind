@@ -6,7 +6,6 @@ import {correctCodeReducer} from './correctCodeReducer'
 import {advancedOptionsReducer} from './advancedOptionsReducer'
 import {gameStatusReducer} from './gameStatusReducer'
 import { isPlayerWinnerReducer } from './isPlayerWinnerReducer'
-import { remainingTurnsReducer } from './remainderTurnsReducer'
 
 
 export const rootReducer = combineReducers({
@@ -17,5 +16,4 @@ export const rootReducer = combineReducers({
   advancedOptions: advancedOptionsReducer,
   gameStatus: gameStatusReducer,
   winner: isPlayerWinnerReducer,
-  turnsRemaining: remainingTurnsReducer,
 })

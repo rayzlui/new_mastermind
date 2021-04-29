@@ -5,16 +5,21 @@ import { UserBoardContainer } from '../containers/UserBoardContainer'
 import {SubmitButtonContainer} from '../containers/SubmitButtonContainer'
 import { TurnsRemainingContainer } from '../containers/TurnsRemainingContainer'
 import { IntroScreenContainer } from '../containers/IntroScreenContainer'
+import { PlayerCreateCodeContainer } from '../containers/PlayerCreateCodeContainer'
 
 export function Mastermind(props){
 
-  let { gameStatus, winner} = props
+  let { gameStatus, winner, versusComputer} = props
   if (!gameStatus){
     if (winner){
       return <h1>You win!</h1>
     }
     if (winner === false){
       return <h1>You lose :(</h1>
+    }
+
+    if (versusComputer === false){
+      return <PlayerCreateCodeContainer />
     }
     return (
       <IntroScreenContainer />

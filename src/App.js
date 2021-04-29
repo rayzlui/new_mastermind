@@ -9,10 +9,9 @@ import { MastermindContainer } from './containers/MastermindContainer';
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <header className="App-header">
-          <MastermindContainer/>
-        </header>
+      <div className="App-header">
+        <header className="App-header"></header>
+        <MastermindContainer/>
       </div>
     </Provider>
   );

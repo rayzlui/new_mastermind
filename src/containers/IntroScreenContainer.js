@@ -5,11 +5,13 @@ import { IntroScreen } from '../views/IntroScreen'
 function mapDispatchToProps(dispatch){
   return {
     quickPlay: () => dispatch(versusComputer(4,7,10)),
-    vsComputer: (codeLength, codeOptions,turns) => {
-      dispatch(versusComputer(codeLength, codeOptions,turns))
+    vsComputer: (arg) => {
+      let integerize = arg.map(x=>parseInt(x))
+      dispatch(versusComputer(...integerize))
     },
-    vsPlayer: (codeLength, codeOptions,turns)  => {
-      dispatch(versusPlayer(codeLength, codeOptions,turns))
+    vsPlayer: (arg)  => {
+      let intergize = arg.map(x=>parseInt(x))
+      dispatch(versusPlayer(...intergize))
     }
 
   }

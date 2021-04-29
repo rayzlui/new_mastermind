@@ -1,6 +1,6 @@
 
 export function SubmitButton(props){
-  const {numbersGuessed, runCheckCode, codeLength, triggerApi} = props
+  const {numbersGuessed, runCheckCode, codeLength} = props
 
   if (numbersGuessed === codeLength){
     return (

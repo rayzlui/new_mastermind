@@ -1,4 +1,4 @@
-import { ADD_USER_MOVE, USER_SET_DIFFICULTY, USER_INPUT } from '../actions/actionTypes'
+import { ADD_USER_MOVE, START_PLAYER, USER_INPUT, VERSUS_COMPUTER, VERSUS_PLAYER } from '../actions/actionTypes'
 const initialState = { 
   numbersGuessed: 0,
   board: new Array(4)
@@ -6,7 +6,9 @@ const initialState = {
 
 export function userBoardReducer(state = initialState, action){
   switch(action.type){
-    case USER_SET_DIFFICULTY:
+    case VERSUS_COMPUTER:
+    case VERSUS_PLAYER:
+    case START_PLAYER:
       let {codeLength} = action
       let newBoard = new Array(codeLength)
       return {numbersGuessed: 0, board: newBoard};
