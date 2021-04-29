@@ -1,34 +1,3 @@
-export async function getRandomNumbers(size, range){
-  let response = await fetch(`https://www.random.org/integers/?num=${size}&min=1&max=${range}&col=1&base=10&format=plain&rnd=new`)
-
-  if (response.status === 200){
-    //response comes as plain text, not JSON.
-    let receivedString =  response.text()
-    return await receivedString
-  }else{
-    throw new Error(response.status)
-  }
-
-}
-  
-
-export function hiddenCodeGenerator(size, range){
-    let numString = getRandomNumbers(size, range)
-    //numString is string with line breaks
-    let numArray = []
-    let countOfEachNum = {}
-    for (let i = 0; i < numString.length; i++){
-      let currentNum = numString[i]
-      let stringToInt = parseInt(currentNum)
-      if (!isNaN(stringToInt)){
-        //avoid line breaks
-        numArray.push(stringToInt)
-        countOfEachNum[stringToInt] = countOfEachNum[stringToInt] + 1 || 1 
-      }
-    }
-    return {code: numArray, countOfEachNum: countOfEachNum}
-}
-
 export function altCheckUserGuess(userAnswer, correctAnswer, countOfEachNum){
   //compare which indexes have the same num
   //if not compare to reference to see if there are nums in other locations
@@ -64,7 +33,7 @@ export function altCheckUserGuess(userAnswer, correctAnswer, countOfEachNum){
   return {redPegs: redPegs, whitePegs: whitePegs}
 }
 
-export function CheckUserGuess(userAnswer, correctAnswer, countOfEachNum){
+export function checkUserGuess(userAnswer, correctAnswer, countOfEachNum){
   /*
   [0,4,0,4,0,4] correct
   [4,4,4,4,4,4] guess

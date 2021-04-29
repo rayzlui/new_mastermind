@@ -1,0 +1,21 @@
+//states
+this.state = {
+  gameMode: 'computer',
+  remainingTurns: 10,
+  correctAnswer: null,
+  moveHistory: [],
+  selectedInput: undefined,
+  userBoard: {1: null, 2: null, 3: null, 4:null},
+  numsSelected: 0,
+  winner: false,
+}
+
+
+
+//from homescreen
+
+import store from '../createStore'
+
+store.dispatch({type: VERSUS_COMPUTER})
+
+import { VERSUS_COMPUTER } from '../actions/actionTypes'

@@ -1,3 +1,39 @@
+# Mastermind
+
+# Installation
+
+# Thought Process
+Start with the essentials:
+  - We need a secret code
+  - We need a way for user to enter secret code
+  - We need a way to check if user inputted code is correct 
+    - We will need to provide feedback if it isn't correct
+
+The first thing that came to mind was how should we store the secret code and user inputted code, and how that would influence how our check function would need to operate.
+
+If we stored both the secret code and the inputted code as strings, we could have a fast checking by seeing if they are equal to each other. But if it's incorrect, providing feedback would be more difficult. I would need to run a loop to check if the user input was the same as the code for every loop to check how many were correct code and at the correct spot. But I ran into some issues with how I would provide feedback for correct code but wrong position. 
+
+So I considered storing the codes in an array. Arrays would be a little more time consuming for checking if the inputted code was completely correct, but we would make it easier to provide feedback if it's incorrect. We run a for loop, compare indices and remove from the array if they're both equal. If the array is empty at the end, then it would be the correct answer and if not, we could go through what's left of the user input code and search for indexes of where it existed in the correct code and remove from the code as we progressed through. But this could get time consuming in situations such as: 
+      let correctCode = [0,0,0,0,0,0,0,0,0,0,0,0]
+      let userGuess =   [1,1,1,1,1,1,1,1,1,1,1,1]
+which would run at O(n**2).
+
+I decided to add a hash that stored the number of times a number appears in the correctCode. This would allow us to check for correct numbers but incorrect order easier. So now in the instance of:
+    let correctCode = [0,0,0,0,0,0,0,0,0,0,0,0]
+    let countCodeHash = {0: 12}
+    let userGuess =   [1,1,1,1,1,1,1,1,1,1,1,1]
+it would take O(2n), one loop to check if it's correct at each location and 1 loop to check if it's correct but in the wrong location.
+
+I realized I could avoid the second loop by counting the code if it's in countCodeHash and if countCodeHash[num] was greater than 0. I could add it to correctCodeCorrectLocation if it's also in the correct location else add it into correctCodeWrongLocation. After countCodeHash[num] was less than 0, if I came across an index that was correctCodeCorrectLocation, I would move from it from correctCodeWrongLocation and shift it over to correctCodeCorrectLocation. 
+
+We could check if a player won by checking if correctCodeCorrectLocation was equal to correctCode.length else we could just provide the feedback.
+
+After the core logic, I moved to how to generate the secret code. I used a Javascript fetch call to request the data. Once the data was received, I had some hiccups with processing the data. This was the first time I used an API that did return it in a json format, and I wasn't sure which of Javascripts Response methods to use. I'm still not completely sure this is the best or even correct way, but I settled on using Response.text() and removing the line breaks from the result. 
+
+I put the fetch call in a function I called getRandomNumber(size, range), the allowed inputs in case I wanted to add user selected difficulties as an app extension.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
