@@ -4,7 +4,7 @@ import { IntroScreen } from '../views/IntroScreen'
 
 function mapDispatchToProps(dispatch){
   return {
-    quickPlay: () => dispatch(versusComputer(4,7,10)),
+    quickPlay: () => dispatch(versusComputer(4,7,10,4)),
     vsComputer: (arg) => {
       let integerize = arg.map(x=>parseInt(x))
       dispatch(versusComputer(...integerize))

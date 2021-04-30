@@ -6,6 +6,7 @@ import {SubmitButtonContainer} from '../containers/SubmitButtonContainer'
 import { TurnsRemainingContainer } from '../containers/TurnsRemainingContainer'
 import { IntroScreenContainer } from '../containers/IntroScreenContainer'
 import { PlayerCreateCodeView } from './PlayerCreateCodeView'
+import { CountdownTimerContainer } from '../containers/CountdownTimerContainer'
 
 export function Mastermind(props){
 
@@ -30,6 +31,7 @@ export function Mastermind(props){
   return (
     <div className={'container'}> 
       <h1>Mastermind</h1> 
+      <CountdownTimerContainer/>
       <TurnsRemainingContainer/>
       <MoveHistoryContainer/>
       <CodeOptionsContainer />

@@ -34,12 +34,12 @@ export function actionUserMoveToHistory(move){
   return {type: ADD_USER_MOVE, move: move}
 }
 
-export function versusPlayer(codeLength, codeOptions, turns){
-  return {type: VERSUS_PLAYER, codeLength, codeOptions, turns}
+export function versusPlayer(codeLength, codeOptions, turns, timeAllowed){
+  return {type: VERSUS_PLAYER, codeLength, codeOptions, turns, timeAllowed}
 }
 
-export function versusComputer(codeLength, codeOptions, turns){
-  return {type: VERSUS_COMPUTER,codeLength, codeOptions, turns}
+export function versusComputer(codeLength, codeOptions, turns, timeAllowed){
+  return {type: VERSUS_COMPUTER,codeLength, codeOptions, turns, timeAllowed}
 }
 
 export function gameWon(){
