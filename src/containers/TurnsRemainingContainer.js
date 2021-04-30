@@ -3,7 +3,8 @@ import { TurnsRemaining } from '../views/TurnsRemaining'
 
 function mapStateToProps(state){
   return {
-    turns: state.advancedOptions.turns
+    turnsAllowed: state.advancedOptions.turnsAllowed,
+    turnsMade: state.advancedOptions.turnsMade,
   }
 }
 
