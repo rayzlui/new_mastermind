@@ -22,7 +22,7 @@ function mapDispatchToProps(dispatch){
       if (checkAnswer.red === userBoardValues.length){
           dispatch(gameWon())
       }else{
-        if (state.advancedOptions.turns === 1){
+        if (state.advancedOptions.turnsAllowed - state.advancedOptions.turnsMade === 1){
           dispatch(gameLost())
         }
         let {red, white} = checkAnswer
