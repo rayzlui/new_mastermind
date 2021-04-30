@@ -14,7 +14,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return{
  
-    runCheckCode: () => {
+    submit: () => {
       let state = store.getState()
       let userBoardValues = Object.values(state.userBoard.board)
       let {code, countOfEachNum} = state.correctCode

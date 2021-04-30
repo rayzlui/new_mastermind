@@ -5,7 +5,7 @@ import { UserBoardContainer } from '../containers/UserBoardContainer'
 import {SubmitButtonContainer} from '../containers/SubmitButtonContainer'
 import { TurnsRemainingContainer } from '../containers/TurnsRemainingContainer'
 import { IntroScreenContainer } from '../containers/IntroScreenContainer'
-import { PlayerCreateCodeContainer } from '../containers/PlayerCreateCodeContainer'
+import { PlayerCreateCodeView } from './PlayerCreateCodeView'
 
 export function Mastermind(props){
 
@@ -19,7 +19,7 @@ export function Mastermind(props){
     }
 
     if (versusComputer === false){
-      return <PlayerCreateCodeContainer />
+      return <PlayerCreateCodeView />
     }
     return (
       <IntroScreenContainer />
