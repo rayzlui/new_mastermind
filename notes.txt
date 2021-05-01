@@ -19,3 +19,36 @@ import store from '../createStore'
 store.dispatch({type: VERSUS_COMPUTER})
 
 import { VERSUS_COMPUTER } from '../actions/actionTypes'
+
+
+
+Things to do:
+seperate timed mode and classic mode.
+  - time mode will be solve as many as you can in time given.
+  - classic will be turn based.
+
+
+create VERSUS MODE 
+
+-two players playing vs computer
+-two rounds each, if draw after two rounds, first to lose, loses.
+
+or use timed mode here too
+
+allow player to select if they want to replay with same difficulties or change
+
+a bunch of css.
+  - common styling
+  - add highlight border to selected index
+
+add giphy api to background?
+add pokepai for sprites?
+maybe never gonna give you up each time they click?
+add hints where if one clicks hint button, we auto add a correct num into a user board?
+  - highlight userboard spot red to signify hinted
+
+maybe try and make it like those three match games
+  - each time user inputs 1 correct, does 1 damage 
+  - 2 == 2 damage 
+  - heals each time you get wrong 
+  - can't win until all correct?

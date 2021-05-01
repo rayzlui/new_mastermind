@@ -1,36 +1,17 @@
 import React, {useState} from 'react'
+import { AdvancedOptionsContainer } from '../containers/AdvancedOptionsContainer'
 
-export function GameSelectView(props){
-  let {vsPlayer, vsComputer, quickPlay, gameStatus} = props
-  let [codeLength, lengthChange ] = useState(4)
-  let [optionsLength, optionsChange] = useState(8)
-  let [turnsLength, turnsChange] = useState(10)
-  let [timeAllowed, changeTime] = useState(4)
+export function GameSelectView(props){ 
+  let {quickPlay, playAgain, winner} = props
   let [advancedOptions, toggleAdvanceOptions] = useState(false)
-  let welcome = gameStatus ? null : <h1>Welcome</h1>
-  let selectDifficulty = advancedOptions ? 
-  <>
-    <h3>Select Difficulty</h3>
-    <label>Code Length</label>
-    <input onChange={event => lengthChange(event.target.value)} type='range' class='slider' min='4' max='20' value={codeLength} id='code_length'></input>
-    <input onChange={event => lengthChange(event.target.value)} type='number' value={codeLength} min='4' max='20'></input>
-    <label>Number Of Options</label>
-    <input onChange={event => optionsChange(event.target.value)} type='range' class='slider' min='7' max='50' value={optionsLength} id='options_length'></input>
-    <input onChange={event => optionsChange(event.target.value)} type='number' value={optionsLength} min='7' max='50'></input>
-    <label>Number Of Turns</label>
-    <input onChange={event => turnsChange(event.target.value)} type='range' class='slider' min='4' max='20' value={turnsLength} id='turns_length'></input>
-    <input onChange={event => turnsChange(event.target.value)} type='number' value={turnsLength} min='4' max='20'></input>
-    <label>Time Allowed</label>
-    <input onChange={event => changeTime(event.target.value)} type='range' class='slider' min='1' max='10' value={timeAllowed} id='turns_length'></input>
-    <input onChange={event => changeTime(event.target.value)} type='number' value={timeAllowed} min='1' max='10'></input>
-    <button onClick={() => vsComputer([codeLength, optionsLength, turnsLength, timeAllowed])}>Play Versus Computer</button><button onClick={() => vsPlayer([codeLength, optionsLength, turnsLength,timeAllowed])}>Play Versus Player</button>
-  </> : null
+
+  let selectDifficulty = advancedOptions ? <AdvancedOptionsContainer/>: null
+  let [gamePlay, userChoice] = winner === null ? [<button onClick={quickPlay}>Quick Play</button>, 'Advanced Options'] :[ <button onClick={playAgain}>Play Again</button>, 'Change Settings']
+
   return(
     <>
-      {welcome}
-      <h3>Select GameMode</h3>
-      <button onClick={quickPlay}>Quick Play</button>
-      <button onClick={() => toggleAdvanceOptions(!advancedOptions)}>Advance Options </button>
+      {gamePlay}
+      <button onClick={() => toggleAdvanceOptions(!advancedOptions)}>{userChoice} </button>
       {selectDifficulty}
       
     </>

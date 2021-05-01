@@ -25,7 +25,7 @@ export function userBoardReducer(state = initialState, action){
         board: copyBoard
       })
     case ADD_USER_MOVE:
-      let nextBoard = new Array(state.numbersGuessed)
+      let nextBoard = new Array(action.move.moves.length)
       return {numbersGuessed: 0, board: nextBoard};
     default:
       return state

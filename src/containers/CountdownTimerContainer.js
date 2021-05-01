@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { gameLost } from '../actions/actions'
+import { gameWon } from '../actions/actions'
 import { CountdownTimer } from '../views/CountdownTimer'
 
 function mapStateToProps(state){
@@ -10,7 +10,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    endGame: () => dispatch(gameLost())
+    endGame: () => dispatch(gameWon())
   }
 }
 

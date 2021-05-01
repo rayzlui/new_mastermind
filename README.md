@@ -32,7 +32,7 @@ After the core logic, I moved to how to generate the secret code. I used a Javas
 
 I put the fetch call in a function I called getRandomNumber(size, range), the allowed inputs in case I wanted to add user selected difficulties as an app extension.
 
-
+Changed IntroView -> Select Game Mode for reusability
 
 # Getting Started with Create React App
 

@@ -1,4 +1,4 @@
-import { ADD_USER_MOVE } from "../actions/actionTypes";
+import { ADD_USER_MOVE, NEW_GAME } from "../actions/actionTypes";
 
 export function moveHistoryReducer(state = [], action){
   switch (action.type){
@@ -6,6 +6,9 @@ export function moveHistoryReducer(state = [], action){
       let newState = state.slice()
       newState.push(action.move)
       return newState 
+    
+    case NEW_GAME:
+      return []
     default:
       return state
   }

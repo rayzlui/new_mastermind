@@ -1,4 +1,4 @@
-import { ADD_USER_MOVE, VERSUS_COMPUTER, VERSUS_PLAYER} from "../actions/actionTypes";
+import { ADD_USER_MOVE, VERSUS_COMPUTER, VERSUS_PLAYER, ADD_ANOTHER_TURN, ONE_MORE_CHANCE} from "../actions/actionTypes";
 
 const intialState = {
   computer: null,
@@ -18,6 +18,10 @@ export function advancedOptionsReducer(state = intialState,action){
       case ADD_USER_MOVE:
         let turnsMade = state.turnsMade + 1
         return Object.assign({}, state, {turnsMade: turnsMade})
+      case ADD_ANOTHER_TURN:
+      case ONE_MORE_CHANCE:
+        let addTurn = state.turnsAllowed + action.turns
+        return Object.assign({}, state, {turnsAllowed: addTurn})
     default:
       return state
     }

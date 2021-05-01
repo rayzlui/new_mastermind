@@ -1,4 +1,4 @@
-import {UNSELECT_INPUT_SPOT, ERROR_GETTING_CODE, SET_LOADING_SCREEN, SET_SECRET_CODE, CODE_SIZE_SELECTED, USER_INPUT, SELECT_INPUT_SPOT, ADD_USER_MOVE, VERSUS_COMPUTER , VERSUS_PLAYER, GAME_WON, GAME_LOST} from './actionTypes'
+import {UNSELECT_INPUT_SPOT,ADD_ANOTHER_TURN, NEW_GAME, CORRECT_GUESS, ONE_MORE_CHANCE, ERROR_GETTING_CODE, SET_LOADING_SCREEN, SET_SECRET_CODE, CODE_SIZE_SELECTED, USER_INPUT, SELECT_INPUT_SPOT, ADD_USER_MOVE, VERSUS_COMPUTER , VERSUS_PLAYER, GAME_WON, GAME_LOST} from './actionTypes'
 
 
 export function errorFetchingAPICode(){
@@ -48,4 +48,19 @@ export function gameWon(){
 
 export function gameLost(){
   return {type: GAME_LOST}
+}
+
+export function addExtraTurn(turns = 1){
+  return { type: ADD_ANOTHER_TURN, turns }
+}
+export function oneMoreChance(turns = 1){
+  return { type: ONE_MORE_CHANCE, turns }
+}
+
+export function updateScore(){
+  return { type: CORRECT_GUESS }
+}
+
+export function newGame(){
+  return { type: NEW_GAME }
 }

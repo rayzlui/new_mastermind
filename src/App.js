@@ -10,6 +10,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App-header">
+        <h1>Mastermind</h1>
         <MastermindContainer/>
       </div>
     </Provider>

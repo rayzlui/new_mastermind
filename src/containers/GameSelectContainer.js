@@ -1,25 +1,31 @@
 import { connect } from 'react-redux'
-import { versusComputer, versusPlayer } from '../actions/actions'
+import { newGame, versusComputer, versusPlayer} from '../actions/actions'
 import { GameSelectView } from '../views/GameSelectView'
+import store from '../createStore'
 
 function mapStateToProps(state){
   return {
-    gameStatus: state.gameStatus
+    winner: state.winner
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    quickPlay: () => dispatch(versusComputer(4,8,10,4)),
-    vsComputer: (arg) => {
-      let integerize = arg.map(x=>parseInt(x))
-      dispatch(versusComputer(...integerize))
+    quickPlay: () => {
+      dispatch(newGame())
+      dispatch(versusComputer(4,8,10,4))
     },
-    vsPlayer: (arg)  => {
-      let intergize = arg.map(x=>parseInt(x))
-      dispatch(versusPlayer(...intergize))
+    playAgain: () => {
+      let state = store.getState()
+      dispatch(newGame())
+      let {computer, codeLength, codeOptions, turnsAllowed, timeAllowed} = state.advancedOptions
+      if (computer){
+        dispatch(versusComputer(codeLength,codeOptions,turnsAllowed, timeAllowed))
+      }else{
+        dispatch(versusPlayer(codeLength,codeOptions, turnsAllowed, timeAllowed))
+      }
     }
-
   }
+
 }
 export const GameSelectContainer = connect(mapStateToProps, mapDispatchToProps)(GameSelectView)
