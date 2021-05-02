@@ -1,10 +1,10 @@
-import {connect} from 'react-redux'
-import { MoveHistory } from '../views/MoveHistory'
+import { connect } from "react-redux";
+import { MoveHistory } from "../views/MoveHistory";
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    previousMoves: state.moveHistory
-  }
+    previousMoves: state.moveHistory,
+  };
 }
 
-export const MoveHistoryContainer = connect(mapStateToProps)(MoveHistory)
+export const MoveHistoryContainer = connect(mapStateToProps)(MoveHistory);

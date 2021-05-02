@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  display: inline-block;
 }
 
 .App-logo {
@@ -13,14 +14,11 @@
   }
 }
 
-.App-header {
+.container {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  grid-template-columns: 20% auto 30%;
+  display: grid;
   color: white;
 }
 
@@ -35,4 +33,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#move_history_container{
+  left: 0;
+
+}
+
+#code_options_container{
+  right:0;
+}
+
+
+
+p {
+  font-size: 2vw;
+}
+
+
+.game_name{
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+button:hover{
+  background-color: black;
+  color: white;
+}
+
+.highlight_userboard{
+  border: 2px solid purple
+}
+
+.code_options, .regular_userboard {
+  height: 5%;
+  width: 5%;
 }

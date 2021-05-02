@@ -1,23 +1,24 @@
-import React from 'react' 
-import { CodeOptionsContainer } from '../containers/CodeOptionsContainer'
-import {MoveHistoryContainer} from '../containers/MoveHistoryContainer'
-import { UserBoardContainer } from '../containers/UserBoardContainer'
-import {SubmitButtonContainer} from '../containers/SubmitButtonContainer'
-import { TurnsRemainingContainer } from '../containers/TurnsRemainingContainer'
-import { AddExtraTurnButton } from './AddExtraTurnButton'
+import React from "react";
+import { CodeOptionsContainer } from "../containers/CodeOptionsContainer";
+import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
+import { UserBoardContainer } from "../containers/UserBoardContainer";
+import { SubmitButtonContainer } from "../containers/SubmitButtonContainer";
+import { TurnsRemainingContainer } from "../containers/TurnsRemainingContainer";
+import { AddExtraTurnButton } from "./buttons/AddExtraTurnButton";
+import { ModeDisplayContainer } from "../containers/ModeDisplayContainer";
 
-
-export function ClassicMode(props){
-
-
+export function ClassicMode(props) {
   return (
-    <div className={'classic_mode'}> 
-      <TurnsRemainingContainer/>
-      <MoveHistoryContainer/>
-      <UserBoardContainer/>
-      <CodeOptionsContainer />
-      <SubmitButtonContainer/>
-      <AddExtraTurnButton />
-    </div>
-)
-  }
+    <>
+      <section className={"user_input"}>
+        <ModeDisplayContainer />
+        <TurnsRemainingContainer />
+        <CodeOptionsContainer />
+        <UserBoardContainer />
+        <SubmitButtonContainer />
+        <AddExtraTurnButton />
+      </section>
+      <MoveHistoryContainer />
+    </>
+  );
+}

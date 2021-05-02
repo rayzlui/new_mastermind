@@ -32,6 +32,18 @@ After the core logic, I moved to how to generate the secret code. I used a Javas
 
 I put the fetch call in a function I called getRandomNumber(size, range), the allowed inputs in case I wanted to add user selected difficulties as an app extension.
 
+Built App with just React, with all necessary requirements to figure out state.
+Moved to redux, allow modularity and make it easier to add extensions to app.
+
+Built following extensions:
+  - Allow player to create code.
+  - A countdown timer, that would end game after it was completed
+    - Expanded this to a timed mode, where player could keep guessing until they got it correct and a score is kept
+  - Allow user to select how long the secret code is, how many options they have per code and time/turns allowed per mode.
+  - Restart game button, which allows player to restart game based on certain settings or allow them to change as well.
+  - Add extra turn button, which adds an extra turn in classic mode. 
+
+
 Changed IntroView -> Select Game Mode for reusability
 
 # Getting Started with Create React App
