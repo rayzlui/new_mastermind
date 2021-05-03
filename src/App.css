@@ -3,70 +3,113 @@
   display: inline-block;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .container {
   background-color: #282c34;
   min-height: 100vh;
-  grid-template-columns: 20% auto 30%;
   display: grid;
+
+  grid-template-columns: 40% auto;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+section {
+  text-align: right;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-#move_history_container{
-  left: 0;
-
-}
-
-#code_options_container{
-  right:0;
+.mode_info{
+  text-align: left;
 }
 
 
 
-p {
-  font-size: 2vw;
+#intro_screen{
+  padding-top: 46.5vh;
 }
 
+
+.code_select{
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.userboard_select_info{
+  width:9vw;
+  display: inline-block;
+  text-align: center;
+  overflow-x: scroll;
+  width:60vw;
+}
+
+.user_interaction{
+  height: 40vh;
+  width:60vw;
+}
+
+.code_options{
+  overflow: scroll;
+  white-space: normal;
+  position: relative;
+  height: 20vh;
+}
+
+.code_submit button {
+  height: 4vh;
+}
+
+.game_options{
+  height: 5vw;
+}
+
+button{
+  border-radius: 5px;
+}
+.title{
+  padding-top: 44vh;
+  height: 7vh;
+  text-align: left;
+  color: lightgray;
+
+}
 
 .game_name{
-  position: fixed;
-  top: 50%;
-  transform: translate(0, -50%);
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+.intro_screen, .start_game_select{
+  padding-top: 42vh;
+}
+.gameover_view {
+  padding-top: 20vh;
 }
 
 button:hover{
   background-color: black;
   color: white;
 }
+.history_display{
+  padding-top: 50px;
+  overflow: scroll;
 
-.highlight_userboard{
-  border: 2px solid purple
+  height: 23vh;
 }
 
-.code_options, .regular_userboard {
-  height: 5%;
-  width: 5%;
+.move_history_title{
+  position: absolute;
+  height: 6vh;
+  background-color: whitesmoke;
+  top: 0;
+  right:0;
+  width: 60vw;
+}
+
+
+#move_history_container{
+  background-color: whitesmoke;
+  color: black;
+  height: 30vh;
+  border-radius: 0 0 0 5px;
+  position: relative;
+
 }

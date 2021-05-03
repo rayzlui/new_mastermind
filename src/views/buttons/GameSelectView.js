@@ -9,32 +9,38 @@ export function GameSelectView(props) {
   let [advancedOptions, toggleAdvanceOptions] = useState(false);
 
   let selectDifficulty = advancedOptions ? <AdvancedOptionsContainer /> : null;
-  let [gamePlay, userChoice] =
+  let [modeDisplay, gamePlay, userChoice, clickHandler] =
     winner === null
       ? [
           // eslint-disable-next-line react/jsx-key
-          <button onClick={quickPlay} className={"game_options"}>
-            Quick Play
-          </button>,
+          <ModeDisplayContainer />,
+          // eslint-disable-next-line react/jsx-key
+          " Quick Play",
           "Advanced Options",
+          quickPlay,
         ]
       : [
+          null,
           // eslint-disable-next-line react/jsx-key
-          <button onClick={playAgain} className={"game_options"}>
-            RUN IT BACK
-          </button>,
+          "RUN IT BACK",
           "Change Settings",
+          playAgain,
         ];
 
   return (
     <section className={"game_select_container"}>
-      <ModeDisplayContainer />
-      {gamePlay}
-      <button onClick={() => toggleAdvanceOptions(!advancedOptions)}>
+      {modeDisplay}
+      <button onClick={clickHandler} className={"game_options"}>
+        {gamePlay}
+      </button>
+      <button
+        onClick={() => toggleAdvanceOptions(!advancedOptions)}
+        className={"game_options"}
+      >
         {userChoice}
       </button>
-      {selectDifficulty}
       <ChangeModeContainer />
+      {selectDifficulty}
     </section>
   );
 }

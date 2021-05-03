@@ -10,7 +10,7 @@ function sentenceTwo(code, red, white) {
 }
 
 function sentenceThree(code, red, white) {
-  return `OMG YOU HAD ${red} PERFECTS, ON THE SPOT, ABSOLUTELY PERFECT AND ${white}... almost perfects. Try again friend.`;
+  return `OMG YOU HAD ${red} PERFECTS, ON THE SPOT, ABSOLUTELY PERFECT AND ${white}... almost perfects with ${code}. Try again friend.`;
 }
 
 function randomPhraseGenerator(code, red, white, correct = false) {
@@ -49,8 +49,10 @@ export function MoveHistory(props) {
   }
   return (
     <section id={"move_history_container"}>
-      <h1>Move History</h1>
-      {display}
+      <section className={"move_history_title"}>
+        <h1>Move History</h1>
+      </section>
+      <section className={"history_display"}>{display}</section>
     </section>
   );
 }

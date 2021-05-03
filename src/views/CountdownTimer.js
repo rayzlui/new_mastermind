@@ -33,7 +33,7 @@ export function CountdownTimer(props) {
       clearInterval(interval);
     };
   }, [endGame]);
-  return <p>{`${remainingTime}`}</p>;
+  return <p>Time Remaining: {`${remainingTime}`}</p>;
 }
 
 CountdownTimer.propTypes = {

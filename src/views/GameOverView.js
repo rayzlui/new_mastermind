@@ -31,27 +31,31 @@ export function GameOverView(props) {
       </>
     );
     return (
-      <section>
-        <h1>Classic Mode</h1>
-        {isWinner}
-        {answer}
-        <MoveHistoryContainer />
-        {showAnswerButton}
-        {playAgainButton}
-        {gameSelect}
-        <ChangeModeContainer />
-      </section>
+      <>
+        <section className={"gameover_view"}>
+          <h1>Game Over!</h1>
+          <h3>You Played Classic Mode</h3>
+          {isWinner}
+          <MoveHistoryContainer />
+          {answer}
+          {showAnswerButton}
+          {playAgainButton}
+          {gameSelect}
+        </section>
+      </>
     );
   } else if (gameType === TIMED_MODE) {
     return (
-      <section>
-        <h1>Timed Mode</h1>
-        <MoveHistoryContainer />
-        <ScoreContainer />
-        {playAgainButton}
-        {gameSelect}
-        <ChangeModeContainer />
-      </section>
+      <>
+        <section className={"gameover_view"}>
+          <h1>Game Over!</h1>
+          <h3>You Played Timed Mode</h3>
+          <ScoreContainer />
+          <MoveHistoryContainer />
+          {playAgainButton}
+          {gameSelect}
+        </section>
+      </>
     );
   }
 }

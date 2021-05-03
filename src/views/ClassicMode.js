@@ -1,5 +1,4 @@
 import React from "react";
-import { CodeOptionsContainer } from "../containers/CodeOptionsContainer";
 import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { UserBoardContainer } from "../containers/UserBoardContainer";
 import { SubmitButtonContainer } from "../containers/SubmitButtonContainer";
@@ -11,14 +10,16 @@ export function ClassicMode(props) {
   return (
     <>
       <section className={"user_input"}>
-        <ModeDisplayContainer />
-        <TurnsRemainingContainer />
-        <CodeOptionsContainer />
-        <UserBoardContainer />
-        <SubmitButtonContainer />
-        <AddExtraTurnButton />
+        <MoveHistoryContainer />
+        <section className={"input_section"}>
+          <h1>My Guess</h1>
+          <UserBoardContainer />
+        </section>
+        <section className={"code_submit"}>
+          <SubmitButtonContainer />
+          <AddExtraTurnButton />
+        </section>
       </section>
-      <MoveHistoryContainer />
     </>
   );
 }

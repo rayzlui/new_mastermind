@@ -1,6 +1,41 @@
 # Mastermind
 
 # Installation
+Since this app is built with Javascript and React, it will need NodeJS to run. Please download NodeJS from here if you need it:
+
+https://nodejs.org/en/download/
+
+First thing is you have to clone the app! You can do that by typing the following in your command line:
+
+git clone https://github.com/rayzlui/new_mastermind
+
+Once you have it locally, enter the repository from the command line and type:
+
+npm start 
+
+or alternatively if you prefer yarn:
+
+yarn start
+
+and it should load up and run on your preferred web browser. You are ready to play!
+
+# How To Play
+
+At the start you are given two game mode options: classic mode and timed mode. After selecting one, you will be given the option to quick play or select advanced options. 
+
+Quick Play:
+
+Quick play will have a computer generated secret code of length 4, with 8 options to set it. In classic mode, quick play will have 10 turns and in timed mode, 4 minutes. 
+
+Advanced Options:
+
+Advanced Options allows you to set the length of the secret code and the number of characters the code will be built with. In quick play you will be able to also set the amount of turns. In timed mode, you will be able to select the amount of time. 
+
+Additionally, classic mode will allow you to play against another player, ie, they can set the code instead of a computer. At the time of writing, two player for timed mode is in development.
+
+Classic Mode is standard Mastermind, you will be given a certain amount of chances to guess the secret hidden code. To create your code, click the location in your code of where you want to enter it and then click on the number (from the options) you would like to enter there. Then submit the code to check if it's correct. Note: the submit button will not work if your code isn't completely filled out. You can keep clicking it, but it won't do much (or maybe it will if you keep pressing it). Classic mode also allows you to add an extra turn and will allow you to do so, even after the game is lost (maybe your next code is the correct one?). 
+
+In timed mode, you will have a certain amount of time to guess the secret code. You will have unlimited turns and if you are able to guess the code before the time is up, a new code will be generated and you will earn a point. The process of entering your code is the same as classic mode.
 
 # Thought Process
 Start with the essentials:
@@ -11,7 +46,8 @@ Start with the essentials:
 
 The first thing that came to mind was how should we store the secret code and user inputted code, and how that would influence how our check function would need to operate.
 
-If we stored both the secret code and the inputted code as strings, we could have a fast checking by seeing if they are equal to each other. But if it's incorrect, providing feedback would be more difficult. I would need to run a loop to check if the user input was the same as the code for every loop to check how many were correct code and at the correct spot. But I ran into some issues with how I would provide feedback for correct code but wrong position. 
+If we stored both the secret code and the inputted code as strings, we could have a fast checking by seeing if they are equal to each other. But two issues here. Since we're using numbers as code options, a string of numbers can return false positives. Aka if the correct answer is 11, 1, 11, 10
+and the user guessed 1,11,11,10, the string comparsion === will return true, even though it's incorrect. Also if it's incorrect, providing feedback would be more difficult. I would need to run a loop to check if the user input was the same as the code for every loop to check how many were correct code and at the correct spot. But I ran into some issues with how I would provide feedback for correct code but wrong position. 
 
 So I considered storing the codes in an array. Arrays would be a little more time consuming for checking if the inputted code was completely correct, but we would make it easier to provide feedback if it's incorrect. We run a for loop, compare indices and remove from the array if they're both equal. If the array is empty at the end, then it would be the correct answer and if not, we could go through what's left of the user input code and search for indexes of where it existed in the correct code and remove from the code as we progressed through. But this could get time consuming in situations such as: 
       let correctCode = [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -33,7 +69,11 @@ After the core logic, I moved to how to generate the secret code. I used a Javas
 I put the fetch call in a function I called getRandomNumber(size, range), the allowed inputs in case I wanted to add user selected difficulties as an app extension.
 
 Built App with just React, with all necessary requirements to figure out state.
+  - Conflicted with how to build the user input section. Is it required for global state or just local is good enough?
+    - Benefits of local === won't rerender the rest of the app each time user has input
+    - Benefits of having global. Allows me to add more extensions in future if I can think of it.
 Moved to redux, allow modularity and make it easier to add extensions to app.
+
 
 Built following extensions:
   - Allow player to create code.

@@ -4,7 +4,7 @@ import store from "../../createStore";
 
 export function IntroScreenView() {
   return (
-    <section>
+    <section id={"intro_screen"}>
       <button
         onClick={() => store.dispatch({ type: CLASSIC_MODE })}
         className={"game_options"}

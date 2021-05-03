@@ -1,5 +1,15 @@
 import React from "react";
 import { PropTypes } from "prop-types";
+import styled from "styled-components";
+import { CodeOptionsContainer } from "../../containers/CodeOptionsContainer";
+let UserBoardButton = styled.button`
+  height: 9vw;
+  width: 9vw;
+  background-color: ${(props) => (props.highlight ? "green" : "white;")};
+  font-size: 2vw;
+  min-width: 40px;
+  min-height: 40px;
+`;
 
 export function UserBoard(props) {
   let result = [];
@@ -7,18 +17,29 @@ export function UserBoard(props) {
 
   for (let i = 0; i < userBoard.length; i++) {
     result.push(
-      <button
-        className={
-          userSelected === i ? "highlight_userboard" : "regular_userboard"
-        }
+      <UserBoardButton
+        boardLength={userBoard.length}
+        highlight={userSelected === i}
         key={`userboard index ${i}`}
         onClick={() => changeInputSpot(i)}
       >
-        {userBoard[i] || "fill"}
-      </button>
+        {userBoard[i] || `Index ${i + 1}`}
+      </UserBoardButton>
     );
   }
-  return result;
+  let showOptions =
+    userSelected !== null ? (
+      <section className={"code_options"}>
+        <h1>Code Options</h1>
+        <CodeOptionsContainer />
+      </section>
+    ) : null;
+  return (
+    <section className={"user_interaction"}>
+      <section className={"code_select"}>{result}</section>
+      {showOptions}
+    </section>
+  );
 }
 
 UserBoard.propTypes = {

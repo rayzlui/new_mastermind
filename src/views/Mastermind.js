@@ -22,11 +22,20 @@ export function Mastermind(props) {
     //if game status is false, means we've selected game type, no winner or loser, so we need to set code options
     if (versusComputer === false) {
       //by default versus computer is null, will only run if gameStatus is false and versus computer is false aka after GameSelect has chosen vs player
-      display = <PlayerCreateCodeView />;
+      display = (
+        <section className={"start_game_select"}>
+          <PlayerCreateCodeView />
+        </section>
+      );
     } else {
       //if game status is false, means we need to set up game.
-      display = <GameSelectContainer />;
+      display = (
+        <section className={"start_game_select"}>
+          <GameSelectContainer />
+        </section>
+      );
     }
+
     //if game started, no winner, and game type is selected, one of these will run
   } else if (gameType === TIMED_MODE) {
     //if game started, no winner, and game type is selected, one of these will run
