@@ -16,6 +16,8 @@ import {
   GAME_WON,
   GAME_LOST,
   HINT_GIVEN,
+  ONE_PLAYER,
+  TWO_PLAYER,
 } from "./actionTypes";
 
 export function errorFetchingAPICode() {
@@ -109,4 +111,12 @@ export function newGame() {
 
 export function hintRequested(index, value) {
   return { type: HINT_GIVEN, hint: { index: index, value: value } };
+}
+
+export function setOnePlayer() {
+  return { type: ONE_PLAYER };
+}
+
+export function setTwoPlayer() {
+  return { type: TWO_PLAYER };
 }

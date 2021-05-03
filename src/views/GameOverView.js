@@ -3,7 +3,6 @@ import { CLASSIC_MODE, TIMED_MODE } from "../actions/actionTypes";
 import { GameSelectContainer } from "../containers/GameSelectContainer";
 import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { ScoreContainer } from "../containers/ScoreContainer";
-import { ChangeModeContainer } from "../containers/ChangeModeContainer";
 import { PropTypes } from "prop-types";
 
 export function GameOverView(props) {

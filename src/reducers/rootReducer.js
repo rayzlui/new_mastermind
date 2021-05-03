@@ -8,6 +8,7 @@ import { gameStatusReducer } from "./gameStatusReducer";
 import { isPlayerWinnerReducer } from "./isPlayerWinnerReducer";
 import { scoreReducer } from "./scoreReducer";
 import { gameTypeReducer } from "./gameTypeReducer";
+import { versusModeReducer } from "./versusModeReducer";
 
 export const rootReducer = combineReducers({
   userBoard: userBoardReducer,
@@ -19,4 +20,5 @@ export const rootReducer = combineReducers({
   winner: isPlayerWinnerReducer,
   score: scoreReducer,
   gameType: gameTypeReducer,
+  isTwoPlayer: versusModeReducer,
 });

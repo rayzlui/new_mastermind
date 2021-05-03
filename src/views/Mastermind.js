@@ -5,12 +5,16 @@ import { GameOverContainer } from "../containers/GameOverContainer";
 import { ClassicMode } from "./ClassicMode";
 import { TimedMode } from "./TimedMode";
 import { IntroScreenView } from "./buttons/IntroScreenView";
+import { VersusModeContainer } from "../containers/VersusButtonContainer";
 import { CLASSIC_MODE, TIMED_MODE } from "../actions/actionTypes";
 import PropTypes from "prop-types";
 
 export function Mastermind(props) {
-  let { gameStatus, winner, versusComputer, gameType } = props;
+  let { gameStatus, winner, versusComputer, gameType, isTwoPlayer } = props;
   //if game type is null, means we haven't started the game at all, display intro screen
+  if (isTwoPlayer === null) {
+    return <VersusModeContainer />;
+  }
   if (gameType === null) {
     return <IntroScreenView />;
   }

@@ -77,7 +77,7 @@ button{
   font-size: x-large;
 }
 
-.intro_screen, .start_game_select{
+.intro_screen, .start_game_select, .versus_mode_seletor{
   padding-top: 42vh;
 }
 .gameover_view {
