@@ -26,7 +26,6 @@ function mapDispatchToProps(dispatch) {
       let { userBoard, correctCode } = state;
       let { code } = correctCode;
       let { hints, board } = userBoard;
-      console.log(code, board, hints);
       let newHint = handleHintGivenLogic(code, board, hints);
       dispatch(hintRequested(newHint[0], newHint[1]));
     },
