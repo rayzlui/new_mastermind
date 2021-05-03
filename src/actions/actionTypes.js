@@ -19,3 +19,4 @@ export const TIMED_MODE = "TIMED_MODE";
 export const CORRECT_GUESS = "CORRECT_GUESS";
 export const NEW_GAME = "NEW_GAME";
 export const CHANGE_MODE = "CHANGE_MODE";
+export const HINT_GIVEN = "HINT_GIVEN";

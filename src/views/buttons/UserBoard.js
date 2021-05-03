@@ -9,19 +9,25 @@ let UserBoardButton = styled.button`
   font-size: 2vw;
   min-width: 40px;
   min-height: 40px;
+  border: ${(props) => (props.hasHint ? "red solid 2px" : null)};
 `;
 
 export function UserBoard(props) {
   let result = [];
-  let { userBoard, changeInputSpot, userSelected } = props;
+  let { userBoard, changeInputSpot, userSelected, hints } = props;
 
   for (let i = 0; i < userBoard.length; i++) {
+    let hasHint = false;
+    if (hints?.[i]) {
+      hasHint = true;
+    }
     result.push(
       <UserBoardButton
         boardLength={userBoard.length}
         highlight={userSelected === i}
         key={`userboard index ${i}`}
-        onClick={() => changeInputSpot(i)}
+        onClick={hasHint ? null : () => changeInputSpot(i)}
+        hasHint={hasHint}
       >
         {userBoard[i] || `Index ${i + 1}`}
       </UserBoardButton>
@@ -46,4 +52,5 @@ UserBoard.propTypes = {
   userBoard: PropTypes.array,
   changeInputSpot: PropTypes.func,
   userSelected: PropTypes.number,
+  hints: PropTypes.object,
 };

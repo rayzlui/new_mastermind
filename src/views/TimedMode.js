@@ -2,6 +2,7 @@ import React from "react";
 import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { UserBoardContainer } from "../containers/UserBoardContainer";
 import { SubmitButtonContainer } from "../containers/SubmitButtonContainer";
+import { HintButtonContainer } from "../containers/HintButtonContainer";
 
 export function TimedMode() {
   return (
@@ -15,6 +16,7 @@ export function TimedMode() {
         </section>
         <section className={"code_submit"}>
           <SubmitButtonContainer />
+          <HintButtonContainer />
         </section>
       </section>
     </>

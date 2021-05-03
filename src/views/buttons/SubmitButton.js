@@ -29,7 +29,7 @@ export function SubmitButton(props) {
     }
     return null;
   };
-  if (numbersGuessed === codeLength) {
+  if (numbersGuessed >= codeLength) {
     handleClick = submit;
   }
   return (

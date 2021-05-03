@@ -6,6 +6,7 @@ function mapStateToProps(state) {
   return {
     userBoard: state.userBoard.board,
     userSelected: state.userSelected,
+    hints: state.userBoard.hints,
   };
 }
 

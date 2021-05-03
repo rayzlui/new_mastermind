@@ -62,6 +62,8 @@ it would take O(2n), one loop to check if it's correct at each location and 1 lo
 
 I realized I could avoid the second loop by counting the code if it's in countCodeHash and if countCodeHash[num] was greater than 0. I could add it to correctCodeCorrectLocation if it's also in the correct location else add it into correctCodeWrongLocation. After countCodeHash[num] was less than 0, if I came across an index that was correctCodeCorrectLocation, I would move from it from correctCodeWrongLocation and shift it over to correctCodeCorrectLocation. 
 
+I noticed this function was breakable if userGuess array was equal length, but empty.
+
 We could check if a player won by checking if correctCodeCorrectLocation was equal to correctCode.length else we could just provide the feedback.
 
 After the core logic, I moved to how to generate the secret code. I used a Javascript fetch call to request the data. Once the data was received, I had some hiccups with processing the data. This was the first time I used an API that did return it in a json format, and I wasn't sure which of Javascripts Response methods to use. I'm still not completely sure this is the best or even correct way, but I settled on using Response.text() and removing the line breaks from the result. 

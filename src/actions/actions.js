@@ -15,6 +15,7 @@ import {
   VERSUS_PLAYER,
   GAME_WON,
   GAME_LOST,
+  HINT_GIVEN,
 } from "./actionTypes";
 
 export function errorFetchingAPICode() {
@@ -104,4 +105,8 @@ export function updateScore() {
 
 export function newGame() {
   return { type: NEW_GAME };
+}
+
+export function hintRequested(index, value) {
+  return { type: HINT_GIVEN, hint: { index: index, value: value } };
 }

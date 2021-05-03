@@ -2,9 +2,8 @@ import React from "react";
 import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { UserBoardContainer } from "../containers/UserBoardContainer";
 import { SubmitButtonContainer } from "../containers/SubmitButtonContainer";
-import { TurnsRemainingContainer } from "../containers/TurnsRemainingContainer";
 import { AddExtraTurnButton } from "./buttons/AddExtraTurnButton";
-import { ModeDisplayContainer } from "../containers/ModeDisplayContainer";
+import { HintButtonContainer } from "../containers/HintButtonContainer";
 
 export function ClassicMode(props) {
   return (
@@ -17,6 +16,7 @@ export function ClassicMode(props) {
         </section>
         <section className={"code_submit"}>
           <SubmitButtonContainer />
+          <HintButtonContainer />
           <AddExtraTurnButton />
         </section>
       </section>
