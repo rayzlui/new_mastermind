@@ -58,12 +58,13 @@ function mapDispatchToProps(dispatch) {
       if (isTwoPlayer === false) {
         if (gameType === CLASSIC_MODE) {
           if (checkAnswer.red === userBoardValues.length) {
+            previousMove["correctGuess"] = true;
+            dispatch(actionUserMoveToHistory(previousMove));
             dispatch(gameWon());
           } else {
             if (turnsAllowed - turnsMade === 1) {
               dispatch(gameLost());
             }
-            dispatch(actionUserMoveToHistory(previousMove));
           }
         } else if (state.gameType === TIMED_MODE) {
           if (checkAnswer.red === userBoardValues.length) {
