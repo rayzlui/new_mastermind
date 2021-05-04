@@ -18,6 +18,8 @@ import {
   HINT_GIVEN,
   ONE_PLAYER,
   TWO_PLAYER,
+  TWO_PLAYER_CHANGE_TURN,
+  TWO_PLAYER_UPDATE_SCORE,
 } from "./actionTypes";
 
 export function errorFetchingAPICode() {
@@ -119,4 +121,12 @@ export function setOnePlayer() {
 
 export function setTwoPlayer() {
   return { type: TWO_PLAYER };
+}
+
+export function changeTurn() {
+  return { type: TWO_PLAYER_CHANGE_TURN };
+}
+
+export function twoPlayerAddScore(playerNum) {
+  return { type: TWO_PLAYER_UPDATE_SCORE, playerNum: playerNum };
 }

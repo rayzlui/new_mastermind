@@ -5,11 +5,13 @@ import {
   gameLost,
   versusComputer,
   updateScore,
+  changeTurn,
 } from "../actions/actions";
 import { checkUserGuess } from "../gameLogic/gameLogicFunctions";
 import store from "../createStore";
 import { SubmitButton } from "../views/buttons/SubmitButton";
 import { CLASSIC_MODE, TIMED_MODE } from "../actions/actionTypes";
+import { versusModeReducer } from "../reducers/versusModeReducer";
 
 function mapStateToProps(state) {
   return {
@@ -23,8 +25,9 @@ function mapDispatchToProps(dispatch) {
     //handle logic to seperate timedMode vs classicMode
     submit: () => {
       let state = store.getState();
+      let { correctCode, gameType, isTwoPlayer, advancedOptions } = state;
       let userBoardValues = Object.values(state.userBoard.board);
-      let { code, countOfEachNum } = state.correctCode;
+      let { code, countOfEachNum } = correctCode;
       let checkAnswer = checkUserGuess(userBoardValues, code, countOfEachNum);
       let { red, white } = checkAnswer;
       let previousMove = {
@@ -32,27 +35,36 @@ function mapDispatchToProps(dispatch) {
         redPegs: red,
         whitePegs: white,
       };
-      if (state.gameType === CLASSIC_MODE) {
-        if (checkAnswer.red === userBoardValues.length) {
-          dispatch(gameWon());
-        } else {
-          if (
-            state.advancedOptions.turnsAllowed -
-              state.advancedOptions.turnsMade ===
-            1
-          ) {
-            dispatch(gameLost());
+      if (gameType === CLASSIC_MODE) {
+        if (isTwoPlayer === null) {
+          if (checkAnswer.red === userBoardValues.length) {
+            dispatch(gameWon());
+          } else {
+            if (
+              advancedOptions.turnsAllowed - advancedOptions.turnsMade ===
+              1
+            ) {
+              dispatch(gameLost());
+            }
+            dispatch(actionUserMoveToHistory(previousMove));
+          }
+        } else if (state.gameType === TIMED_MODE) {
+          if (checkAnswer.red === userBoardValues.length) {
+            dispatch(updateScore());
+            let { codeLength, codeOptions } = advancedOptions;
+            dispatch(versusComputer(codeLength, codeOptions));
+            previousMove["correctGuess"] = true;
           }
           dispatch(actionUserMoveToHistory(previousMove));
         }
-      } else if (state.gameType === TIMED_MODE) {
+      } else {
+        //let { playerNumTurn } = isTwoPlayer;
         if (checkAnswer.red === userBoardValues.length) {
-          dispatch(updateScore());
-          let { codeLength, codeOptions } = state.advancedOptions;
-          dispatch(versusComputer(codeLength, codeOptions));
-          previousMove["correctGuess"] = true;
+          //get new code for player two
+          dispatch(versusModeReducer());
+          //change turn for player
+          dispatch(changeTurn());
         }
-        dispatch(actionUserMoveToHistory(previousMove));
       }
     },
   };

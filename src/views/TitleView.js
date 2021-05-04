@@ -7,14 +7,20 @@ import { TurnsRemainingContainer } from "../containers/TurnsRemainingContainer";
 import { PropTypes } from "prop-types";
 
 export function TitleView(props) {
-  let { gameType, gameStatus } = props;
+  let { gameType, gameStatus, numPlayers } = props;
   let gameInfo = null;
+  let players = numPlayers ? (
+    <p>Player {numPlayers.playerNumTurn} turn</p>
+  ) : (
+    <p>Single Player</p>
+  );
   if (gameType === TIMED_MODE && gameStatus) {
     gameInfo = (
       <section className={"mode_info"}>
         <ModeDisplayContainer />
         <ScoreContainer />
         <CountdownTimerContainer />
+        {players}
       </section>
     );
   }
@@ -23,6 +29,7 @@ export function TitleView(props) {
       <section className={"mode_info"}>
         <ModeDisplayContainer />
         <TurnsRemainingContainer />
+        {players}
       </section>
     );
   }
@@ -37,4 +44,5 @@ export function TitleView(props) {
 TitleView.propTypes = {
   gameType: PropTypes.string,
   gameStatus: PropTypes.bool,
+  numPlayers: PropTypes.object,
 };
