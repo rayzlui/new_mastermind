@@ -45,17 +45,20 @@ function mapDispatchToProps(dispatch) {
         redPegs: red,
         whitePegs: white,
       };
-      let { codeLength, codeOptions, turnsAllowed } = advancedOptions;
+      let {
+        codeLength,
+        codeOptions,
+        turnsAllowed,
+        timeAllowed,
+        turnsMade,
+      } = advancedOptions;
 
       if (isTwoPlayer === false) {
         if (gameType === CLASSIC_MODE) {
           if (checkAnswer.red === userBoardValues.length) {
             dispatch(gameWon());
           } else {
-            if (
-              advancedOptions.turnsAllowed - advancedOptions.turnsMade ===
-              1
-            ) {
+            if (turnsAllowed - turnsMade === 1) {
               dispatch(gameLost());
             }
             dispatch(actionUserMoveToHistory(previousMove));
@@ -73,11 +76,11 @@ function mapDispatchToProps(dispatch) {
           if (checkAnswer.red === userBoardValues.length) {
             if (isTwoPlayer.playerNumTurn === 2) {
               //if second player just finished => gameover to display who won
-              dispatch(twoPlayerAddScore(2, advancedOptions.turnsMade));
+              dispatch(twoPlayerAddScore(2, turnsMade));
               //add last move for accurate score
               dispatch(gameWon());
             } else {
-              dispatch(twoPlayerAddScore(1, advancedOptions.turnsMade));
+              dispatch(twoPlayerAddScore(1, turnsMade));
               dispatch(changeTurn());
               dispatch(versusComputer(codeLength, codeOptions, turnsAllowed));
               dispatch({ type: SET_SCREEN_CHANGE });
@@ -92,7 +95,9 @@ function mapDispatchToProps(dispatch) {
             } else {
               dispatch(twoPlayerAddScore(1, "add"));
             }
-            dispatch(versusComputer(codeLength, codeOptions, turnsAllowed));
+            dispatch(
+              versusComputer(codeLength, codeOptions, null, timeAllowed)
+            );
             previousMove["correctGuess"] = true;
           }
           dispatch(actionUserMoveToHistory(previousMove));

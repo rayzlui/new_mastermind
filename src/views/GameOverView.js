@@ -21,7 +21,7 @@ export function GameOverView(props) {
     );
     if (score1 < score2) {
       return (
-        <section>
+        <section className={"intro_screen"}>
           <h1>Congratulations: Player 1</h1>
           <p>You beat player 2 by {score2 - score1} moves</p>
           {moveCounts}
@@ -29,7 +29,7 @@ export function GameOverView(props) {
       );
     } else if (score1 === score2) {
       return (
-        <section>
+        <section className={"intro_screen"}>
           <h1>DRAW!</h1>
           <p>Yall should play again</p>
           {moveCounts}
@@ -37,7 +37,7 @@ export function GameOverView(props) {
       );
     } else {
       return (
-        <section>
+        <section className={"intro_screen"}>
           <h1>Congratulations: Player 2</h1>
           <p>You beat Player 1 by {score1 - score2} moves</p>
           {moveCounts}

@@ -22,11 +22,9 @@ section {
 }
 
 
-
-#intro_screen{
-  padding-top: 46.5vh;
+.user_input{
+  padding-top: 5vh;
 }
-
 
 .code_select{
   white-space: nowrap;
@@ -63,9 +61,10 @@ section {
 
 button{
   border-radius: 5px;
+  height: 5vw
 }
 .title{
-  padding-top: 44vh;
+  padding-top: 42vh;
   height: 7vh;
   text-align: left;
   color: lightgray;
@@ -81,7 +80,7 @@ button{
   padding-top: 42vh;
 }
 .gameover_view {
-  padding-top: 20vh;
+  padding-top: 5vh;
 }
 
 button:hover{
@@ -101,7 +100,6 @@ button:hover{
   background-color: whitesmoke;
   top: 0;
   right:0;
-  width: 60vw;
 }
 
 

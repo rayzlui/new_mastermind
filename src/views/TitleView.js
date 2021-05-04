@@ -10,7 +10,7 @@ export function TitleView(props) {
   let { gameType, gameStatus, numPlayers } = props;
   let gameInfo = null;
   let players = numPlayers ? (
-    <p>Player {numPlayers.playerNumTurn} turn</p>
+    <p>Player {numPlayers.playerNumTurn} Turn</p>
   ) : (
     <p>Single Player</p>
   );

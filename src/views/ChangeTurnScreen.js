@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 export function ChangeTurnScreen(props) {
   let { isTwoPlayer, startTurn } = props;
   return (
-    <section>
+    <section className={"intro_screen"}>
       <button onClick={startTurn}>
         Start {isTwoPlayer.playerNumTurn} Turn
       </button>

@@ -12,5 +12,5 @@ export function HintButton(props) {
 HintButton.propTypes = {
   requestHint: PropTypes.func,
   hintCount: PropTypes.number,
-  correctCode: PropTypes.array,
+  correctCode: PropTypes.object,
 };

@@ -7,6 +7,7 @@ function mapStateToProps(state) {
   return {
     timeAllowed: state.advancedOptions.timeAllowed,
     isTwoPlayer: state.isTwoPlayer,
+    turnChange: state.turnChange,
   };
 }
 

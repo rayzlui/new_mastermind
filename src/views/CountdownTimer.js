@@ -7,16 +7,19 @@ function minutesToMilliseconds(minutes) {
   return milliseconds;
 }
 export function CountdownTimer(props) {
-  let { endGame, timeAllowed, isTwoPlayer, changeTurn } = props;
+  let { endGame, timeAllowed, isTwoPlayer, changeTurn, turnChange } = props;
   let [remainingTime, updateTime] = useState(`${timeAllowed}:00`);
-
   let countDownFrom = useRef(minutesToMilliseconds(timeAllowed));
   useEffect(() => {
+    if (turnChange) {
+      countDownFrom.current = minutesToMilliseconds(timeAllowed);
+      return null;
+    }
     let interval = setInterval(() => {
       countDownFrom.current -= 1000;
 
       if (countDownFrom.current <= 0) {
-        if (isTwoPlayer) {
+        if (isTwoPlayer.playerNumTurn === 1) {
           changeTurn();
         } else {
           endGame();
@@ -36,7 +39,8 @@ export function CountdownTimer(props) {
     return () => {
       clearInterval(interval);
     };
-  }, [endGame, changeTurn, isTwoPlayer]);
+  }, [endGame, changeTurn, isTwoPlayer, turnChange]);
+
   return <p>Time Remaining: {`${remainingTime}`}</p>;
 }
 
@@ -45,4 +49,5 @@ CountdownTimer.propTypes = {
   timeAllowed: PropTypes.number,
   isTwoPlayer: PropTypes.object,
   changeTurn: PropTypes.func,
+  turnChange: PropTypes.bool,
 };
