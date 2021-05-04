@@ -5,6 +5,7 @@ import { AdvancedOptionsView } from "../views/AdvancedOptionsView";
 function mapStateToProps(state) {
   return {
     gameType: state.gameType,
+    isTwoPlayer: state.isTwoPlayer,
   };
 }
 

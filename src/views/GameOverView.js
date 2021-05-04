@@ -6,9 +6,45 @@ import { ScoreContainer } from "../containers/ScoreContainer";
 import { PropTypes } from "prop-types";
 
 export function GameOverView(props) {
-  let { winner, showCode, oneMoreChance, gameType } = props;
+  let { winner, showCode, oneMoreChance, gameType, isTwoPlayer } = props;
   let [newGame, toggleNewGame] = useState(false);
   let [isAnswerSeen, showAnswer] = useState(false);
+
+  if (isTwoPlayer) {
+    let score1 = isTwoPlayer[1];
+    let score2 = isTwoPlayer[2];
+    let moveCounts = (
+      <>
+        <p>Player 1: {score1} moves</p>
+        <p>Player2: {score2} moves</p>
+      </>
+    );
+    if (score1 < score2) {
+      return (
+        <section>
+          <h1>Congratulations: Player 1</h1>
+          <p>You beat player 2 by {score2 - score1} moves</p>
+          {moveCounts}
+        </section>
+      );
+    } else if (score1 === score2) {
+      return (
+        <section>
+          <h1>DRAW!</h1>
+          <p>Yall should play again</p>
+          {moveCounts}
+        </section>
+      );
+    } else {
+      return (
+        <section>
+          <h1>Congratulations: Player 2</h1>
+          <p>You beat Player 1 by {score1 - score2} moves</p>
+          {moveCounts}
+        </section>
+      );
+    }
+  }
 
   let playAgainButton = newGame ? null : (
     <button onClick={() => toggleNewGame(!newGame)}>Play Again?</button>

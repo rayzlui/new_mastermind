@@ -127,6 +127,10 @@ export function changeTurn() {
   return { type: TWO_PLAYER_CHANGE_TURN };
 }
 
-export function twoPlayerAddScore(playerNum) {
-  return { type: TWO_PLAYER_UPDATE_SCORE, playerNum: playerNum };
+export function twoPlayerAddScore(playerNum, playerScore) {
+  return {
+    type: TWO_PLAYER_UPDATE_SCORE,
+    playerNum: playerNum,
+    playerScore: playerScore,
+  };
 }

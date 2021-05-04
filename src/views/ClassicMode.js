@@ -4,8 +4,14 @@ import { UserBoardContainer } from "../containers/UserBoardContainer";
 import { SubmitButtonContainer } from "../containers/SubmitButtonContainer";
 import { AddExtraTurnButton } from "./buttons/AddExtraTurnButton";
 import { HintButtonContainer } from "../containers/HintButtonContainer";
+import { ChangeTurnContainer } from "../containers/ChangeTurnContainer";
+import { PropTypes } from "prop-types";
 
 export function ClassicMode(props) {
+  let { turnChange } = props;
+  if (turnChange) {
+    return <ChangeTurnContainer />;
+  }
   return (
     <>
       <section className={"user_input"}>
@@ -23,3 +29,7 @@ export function ClassicMode(props) {
     </>
   );
 }
+
+ClassicMode.propTypes = {
+  turnChange: PropTypes.bool,
+};

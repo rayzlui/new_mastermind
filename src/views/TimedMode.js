@@ -3,8 +3,14 @@ import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { UserBoardContainer } from "../containers/UserBoardContainer";
 import { SubmitButtonContainer } from "../containers/SubmitButtonContainer";
 import { HintButtonContainer } from "../containers/HintButtonContainer";
+import { PropTypes } from "prop-types";
+import { ChangeTurnContainer } from "../containers/ChangeTurnContainer";
 
-export function TimedMode() {
+export function TimedMode(props) {
+  let { turnChange } = props;
+  if (turnChange) {
+    return <ChangeTurnContainer />;
+  }
   return (
     <>
       <section className={"user_input"}>
@@ -22,3 +28,6 @@ export function TimedMode() {
     </>
   );
 }
+TimedMode.propTypes = {
+  turnChange: PropTypes.bool,
+};

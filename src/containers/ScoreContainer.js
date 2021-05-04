@@ -4,6 +4,7 @@ import { ScoreView } from "../views/ScoreView";
 function mapStateToProps(state) {
   return {
     score: state.score,
+    isTwoPlayer: state.isTwoPlayer,
   };
 }
 

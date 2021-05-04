@@ -7,7 +7,7 @@ function minutesToMilliseconds(minutes) {
   return milliseconds;
 }
 export function CountdownTimer(props) {
-  let { endGame, timeAllowed } = props;
+  let { endGame, timeAllowed, isTwoPlayer, changeTurn } = props;
   let [remainingTime, updateTime] = useState(`${timeAllowed}:00`);
 
   let countDownFrom = useRef(minutesToMilliseconds(timeAllowed));
@@ -16,7 +16,11 @@ export function CountdownTimer(props) {
       countDownFrom.current -= 1000;
 
       if (countDownFrom.current <= 0) {
-        endGame();
+        if (isTwoPlayer) {
+          changeTurn();
+        } else {
+          endGame();
+        }
         clearInterval(interval);
       }
       let toMinutes = countDownFrom.current / 60000;
@@ -32,11 +36,13 @@ export function CountdownTimer(props) {
     return () => {
       clearInterval(interval);
     };
-  }, [endGame]);
+  }, [endGame, changeTurn, isTwoPlayer]);
   return <p>Time Remaining: {`${remainingTime}`}</p>;
 }
 
 CountdownTimer.propTypes = {
   endGame: PropTypes.func,
   timeAllowed: PropTypes.number,
+  isTwoPlayer: PropTypes.object,
+  changeTurn: PropTypes.func,
 };

@@ -3,7 +3,7 @@ import { CLASSIC_MODE } from "../actions/actionTypes";
 import { PropTypes } from "prop-types";
 
 export function AdvancedOptionsView(props) {
-  let { vsPlayer, vsComputer, gameType } = props;
+  let { vsPlayer, vsComputer, gameType, isTwoPlayer } = props;
   let [codeLength, lengthChange] = useState(4);
   let [optionsLength, optionsChange] = useState(8);
   let [turnsLength, turnsChange] = useState(10);
@@ -38,13 +38,15 @@ export function AdvancedOptionsView(props) {
           >
             Play Versus Computer
           </button>
-          <button
-            onClick={() =>
-              vsPlayer([codeLength, optionsLength, turnsLength, timeAllowed])
-            }
-          >
-            Play Versus Player
-          </button>
+          {isTwoPlayer ? null : (
+            <button
+              onClick={() =>
+                vsPlayer([codeLength, optionsLength, turnsLength, timeAllowed])
+              }
+            >
+              Play Versus Player
+            </button>
+          )}
         </section>
       </>
     ) : (
@@ -127,4 +129,5 @@ AdvancedOptionsView.propTypes = {
   vsPlayer: PropTypes.func,
   vsComputer: PropTypes.func,
   gameType: PropTypes.string,
+  isTwoPlayer: PropTypes.object,
 };

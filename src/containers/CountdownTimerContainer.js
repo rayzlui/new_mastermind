@@ -1,16 +1,22 @@
 import { connect } from "react-redux";
-import { gameWon } from "../actions/actions";
+import { changeTurn, gameWon } from "../actions/actions";
+import { SET_SCREEN_CHANGE } from "../actions/actionTypes";
 import { CountdownTimer } from "../views/CountdownTimer";
 
 function mapStateToProps(state) {
   return {
     timeAllowed: state.advancedOptions.timeAllowed,
+    isTwoPlayer: state.isTwoPlayer,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     endGame: () => dispatch(gameWon()),
+    changeTurn: () => {
+      dispatch({ type: SET_SCREEN_CHANGE });
+      dispatch(changeTurn());
+    },
   };
 }
 

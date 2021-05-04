@@ -16,6 +16,7 @@ function handleHintGivenLogic(correct, currentGuess, previousGivenHints) {
 function mapStateToProps(state) {
   return {
     hintCount: state.userBoard.hintCount,
+    correctCode: state.correctCode,
   };
 }
 

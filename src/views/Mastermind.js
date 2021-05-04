@@ -2,12 +2,14 @@ import React from "react";
 import { GameSelectContainer } from "../containers/GameSelectContainer";
 import { PlayerCreateCodeView } from "./PlayerCreateCodeView";
 import { GameOverContainer } from "../containers/GameOverContainer";
-import { ClassicMode } from "./ClassicMode";
-import { TimedMode } from "./TimedMode";
 import { IntroScreenView } from "./buttons/IntroScreenView";
 import { VersusModeContainer } from "../containers/VersusButtonContainer";
 import { CLASSIC_MODE, TIMED_MODE } from "../actions/actionTypes";
 import PropTypes from "prop-types";
+import {
+  ClassicModeContainer,
+  TimedModeContainer,
+} from "../containers/PlayModeContainers";
 
 export function Mastermind(props) {
   let { gameStatus, winner, versusComputer, gameType, isTwoPlayer } = props;
@@ -43,9 +45,9 @@ export function Mastermind(props) {
     //if game started, no winner, and game type is selected, one of these will run
   } else if (gameType === TIMED_MODE) {
     //if game started, no winner, and game type is selected, one of these will run
-    display = <TimedMode />;
+    display = <TimedModeContainer />;
   } else if (gameType === CLASSIC_MODE) {
-    display = <ClassicMode />;
+    display = <ClassicModeContainer />;
   }
 
   return display;

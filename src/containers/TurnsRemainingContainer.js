@@ -5,6 +5,7 @@ function mapStateToProps(state) {
   return {
     turnsAllowed: state.advancedOptions.turnsAllowed,
     turnsMade: state.advancedOptions.turnsMade,
+    isTwoPlayer: state.isTwoPlayer,
   };
 }
 
