@@ -52,6 +52,8 @@ function mapDispatchToProps(dispatch) {
         timeAllowed,
         turnsMade,
       } = advancedOptions;
+      let usePhrase = Math.floor(Math.random() * 3);
+      previousMove["randomPhrase"] = usePhrase;
 
       if (isTwoPlayer === false) {
         if (gameType === CLASSIC_MODE) {

@@ -1,25 +1,24 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 
-function sentenceOne(code, red, white) {
-  return `Hey, your last code: ${code}, had ${red} exactly right and ${white} that were in the wrong place. Almost there!`;
+function sentenceOne(red, white) {
+  return `Hey, your last code had ${red} exactly right and ${white} that were in the wrong place. Almost there!`;
 }
 
-function sentenceTwo(code, red, white) {
-  return `Code: ${code}, had ${red} correct, ${white} were spotted else where in the code`;
+function sentenceTwo(red, white) {
+  return `Above code had ${red} correct, ${white} were spotted else where in the code`;
 }
 
-function sentenceThree(code, red, white) {
-  return `OMG YOU HAD ${red} PERFECTS, ON THE SPOT, ABSOLUTELY PERFECT AND ${white}... almost perfects with ${code}. Try again friend.`;
+function sentenceThree(red, white) {
+  return `OMG YOU HAD ${red} PERFECTS, ON THE SPOT, ABSOLUTELY PERFECT AND ${white}... almost perfects. Try again friend.`;
 }
 
-function randomPhraseGenerator(code, red, white, correct = false) {
+function randomPhraseGenerator(red, white, correct = false, random) {
   let store = [sentenceOne, sentenceTwo, sentenceThree];
-  let random = Math.floor(Math.random() * store.length);
   if (correct) {
-    return `Well done! ${code} was exactly it!`;
+    return `Well done! That was exactly it!`;
   }
-  return store[random](code, red, white);
+  return store[random](red, white);
 }
 
 export function MoveHistory(props) {
@@ -27,18 +26,24 @@ export function MoveHistory(props) {
   let display;
   if (previousMoves) {
     let history = [];
-    for (let i = 0; i < previousMoves.length; i++) {
-      let { moves, redPegs, whitePegs, correctGuess } = previousMoves[i];
+    for (let i = previousMoves.length - 1; i >= 0; i--) {
+      let {
+        moves,
+        redPegs,
+        whitePegs,
+        correctGuess,
+        randomPhrase,
+      } = previousMoves[i];
 
       history.push(
         <p key={`move history ${i}`}>
-          Move {`${i + 1}`}
+          <h3>Move {moves.join(" | ")}</h3>
           <br />
           {randomPhraseGenerator(
-            moves.join(" | "),
             redPegs,
             whitePegs,
-            correctGuess
+            correctGuess,
+            randomPhrase
           )}
         </p>
       );
