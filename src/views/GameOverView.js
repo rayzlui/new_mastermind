@@ -9,25 +9,20 @@ export function GameOverView(props) {
   let { winner, showCode, oneMoreChance, gameType, isTwoPlayer } = props;
   let [newGame, toggleNewGame] = useState(false);
   let [isAnswerSeen, showAnswer] = useState(false);
-
+  let playAgainButton = newGame ? null : (
+    <button onClick={() => toggleNewGame(!newGame)}>Play Again?</button>
+  );
+  let gameSelect = newGame ? <GameSelectContainer /> : null;
   if (isTwoPlayer) {
     let score1 = isTwoPlayer[1];
     let score2 = isTwoPlayer[2];
     let moveCounts = (
       <>
-        <p>Player 1: {score1} moves</p>
-        <p>Player2: {score2} moves</p>
+        <p>Player 1: {score1} </p>
+        <p>Player2: {score2} </p>
       </>
     );
-    if (score1 < score2) {
-      return (
-        <section className={"intro_screen"}>
-          <h1>Congratulations: Player 1</h1>
-          <p>You beat player 2 by {score2 - score1} moves</p>
-          {moveCounts}
-        </section>
-      );
-    } else if (score1 === score2) {
+    if (score1 === score2) {
       return (
         <section className={"intro_screen"}>
           <h1>DRAW!</h1>
@@ -35,21 +30,30 @@ export function GameOverView(props) {
           {moveCounts}
         </section>
       );
-    } else {
-      return (
-        <section className={"intro_screen"}>
-          <h1>Congratulations: Player 2</h1>
-          <p>You beat Player 1 by {score1 - score2} moves</p>
-          {moveCounts}
-        </section>
-      );
     }
-  }
+    let winner, loser, moves;
+    if (gameType === TIMED_MODE) {
+      [winner, loser, moves] =
+        score1 > score2
+          ? [1, 2, `getting ${score1 - score2} more correct`]
+          : [2, 1, `getting ${score2 - score1} more correct`];
+    } else {
+      [winner, loser, moves] =
+        score1 > score2
+          ? [2, 1, `${score1 - score2} moves`]
+          : [1, 2, `${score2 - score1} moves`];
+    }
 
-  let playAgainButton = newGame ? null : (
-    <button onClick={() => toggleNewGame(!newGame)}>Play Again?</button>
-  );
-  let gameSelect = newGame ? <GameSelectContainer /> : null;
+    return (
+      <section className={"intro_screen"}>
+        <h1>Congratulations: Player {winner}</h1>
+        <p>
+          You beat Player {loser} by {moves}{" "}
+        </p>
+        {moveCounts}
+      </section>
+    );
+  }
 
   if (gameType === CLASSIC_MODE) {
     let [showAnswerButton, answer] = isAnswerSeen
