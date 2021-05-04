@@ -28,6 +28,9 @@ export function GameOverView(props) {
           <h1>DRAW!</h1>
           <p>Yall should play again</p>
           {moveCounts}
+
+          {playAgainButton}
+          {gameSelect}
         </section>
       );
     }
@@ -51,6 +54,8 @@ export function GameOverView(props) {
           You beat Player {loser} by {moves}{" "}
         </p>
         {moveCounts}
+        {playAgainButton}
+        {gameSelect}
       </section>
     );
   }

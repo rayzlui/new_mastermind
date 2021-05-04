@@ -1,5 +1,10 @@
 import { connect } from "react-redux";
-import { newGame, versusComputer, versusPlayer } from "../actions/actions";
+import {
+  newGame,
+  setTwoPlayer,
+  versusComputer,
+  versusPlayer,
+} from "../actions/actions";
 import { GameSelectView } from "../views/buttons/GameSelectView";
 import store from "../createStore";
 import { SET_SCREEN_CHANGE } from "../actions/actionTypes";
@@ -18,11 +23,11 @@ function mapDispatchToProps(dispatch) {
       dispatch(versusComputer(4, 8, 10, 4));
       if (state.isTwoPlayer) {
         dispatch({ type: SET_SCREEN_CHANGE });
+        dispatch(setTwoPlayer());
       }
     },
     playAgain: () => {
       let state = store.getState();
-      dispatch(newGame());
       let {
         computer,
         codeLength,
@@ -30,6 +35,11 @@ function mapDispatchToProps(dispatch) {
         turnsAllowed,
         timeAllowed,
       } = state.advancedOptions;
+      dispatch(newGame());
+      if (state.isTwoPlayer) {
+        dispatch({ type: SET_SCREEN_CHANGE });
+        dispatch(setTwoPlayer());
+      }
       if (computer) {
         dispatch(
           versusComputer(codeLength, codeOptions, turnsAllowed, timeAllowed)
