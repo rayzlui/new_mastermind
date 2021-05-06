@@ -20,7 +20,7 @@ function mapDispatchToProps(dispatch) {
     quickPlay: () => {
       let state = store.getState();
       dispatch(newGame());
-      dispatch(versusComputer(4, 8, 10, 4));
+      dispatch(versusComputer([4, 8, 10, 4]));
       if (state.isTwoPlayer) {
         dispatch({ type: SET_SCREEN_CHANGE });
         dispatch(setTwoPlayer());

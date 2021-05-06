@@ -1,16 +1,10 @@
 
 Things to do:
 
-write documentation //Do Tuesday, May 4th
+proofread documentation //Do Thursday, May 4th
 
-write test for most views and reducers. //Do Wednesday, Math 5th
+write test for most views and reducers. //Do Thursday, Math 5th
 
-
-add hints where if one clicks hint button, we auto add a correct num into a user board?
-  - highlight userboard spot red to signify hinted
-  - or add to move history. 
-
-ATTEMPT THESE MONDAY, MAY 3rd:
 add pokeapi for sprites?
   - add this in css or javascript?
   - if javascript use inline styling from javascript and have obj storing sprites
@@ -22,6 +16,8 @@ create VERSUS MODE
 -two players playing vs computer
 -two rounds each, if draw after two rounds, first to lose, loses. just use timed mode for this, winner is higher score after a certain time.
 -use timed mode here too
+-classic mode ? => how many turns it took for each player to solve one code 
+-timed mode? => keep score, winner has most in time.
 
 
 
@@ -35,6 +31,11 @@ maybe try and make it like those three match games
 
 
 MISC + ALREADY DONE BELOW:
+
+add hints where if one clicks hint button, we auto add a correct num into a user board?
+  - highlight userboard spot red to signify hinted
+  - or add to move history. 
+
 
 //states
 this.state = {

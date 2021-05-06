@@ -1,5 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
+import styled from "styled-components";
 
 function sentenceOne(red, white) {
   return `Hey, your last code had ${red} exactly right and ${white} that were in the wrong place. Almost there!`;
@@ -21,8 +22,16 @@ function randomPhraseGenerator(red, white, correct = false, random) {
   return store[random](red, white);
 }
 
+const PegDisplay = styled.div`
+  background-color: ${(props) => props.color};
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  border: 1px black solid;
+`;
+
 export function MoveHistory(props) {
-  let { previousMoves } = props;
+  let { previousMoves, pegColors } = props;
   let display;
   if (previousMoves) {
     let history = [];
@@ -34,10 +43,14 @@ export function MoveHistory(props) {
         correctGuess,
         randomPhrase,
       } = previousMoves[i];
+      let pegsDisplay = moves.map((x) => {
+        return <PegDisplay key={i} color={pegColors[x]} />;
+      });
 
       history.push(
         <p key={`move history ${i}`}>
           <h3>Move {moves.join(" | ")}</h3>
+          {pegsDisplay}
           <br />
           {randomPhraseGenerator(
             redPegs,
@@ -64,4 +77,5 @@ export function MoveHistory(props) {
 
 MoveHistory.propTypes = {
   previousMoves: PropTypes.array,
+  pegColors: PropTypes.object,
 };

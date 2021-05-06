@@ -52,12 +52,9 @@ export function actionUserMoveToHistory(move) {
   return { type: ADD_USER_MOVE, move: move };
 }
 
-export function versusPlayer(
-  codeLength,
-  codeOptions,
-  turnsAllowed,
-  timeAllowed
-) {
+export function versusPlayer(arg) {
+  let intergize = arg.map((x) => parseInt(x));
+  let [codeLength, codeOptions, turnsAllowed, timeAllowed] = intergize;
   return {
     type: VERSUS_PLAYER,
     codeLength,
@@ -67,12 +64,9 @@ export function versusPlayer(
   };
 }
 
-export function versusComputer(
-  codeLength,
-  codeOptions,
-  turnsAllowed,
-  timeAllowed
-) {
+export function versusComputer(arg) {
+  let intergize = arg.map((x) => parseInt(x));
+  let [codeLength, codeOptions, turnsAllowed, timeAllowed] = intergize;
   return {
     type: VERSUS_COMPUTER,
     codeLength,

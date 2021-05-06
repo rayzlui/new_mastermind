@@ -6,6 +6,7 @@ function mapStateToProps(state) {
   return {
     userSelected: state.userSelected,
     gameSize: state.advancedOptions.codeOptions,
+    pegColors: state.pegColors,
   };
 }
 

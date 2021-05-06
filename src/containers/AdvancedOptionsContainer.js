@@ -23,16 +23,13 @@ function mapDispatchToProps(dispatch) {
       if (state.isTwoPlayer) {
         dispatch(setTwoPlayer());
       }
-      let integerize = arg.map((x) => parseInt(x));
-
       dispatch(newGame());
-      dispatch(versusComputer(...integerize));
+      dispatch(versusComputer(arg));
       dispatch({ type: SET_SCREEN_CHANGE });
     },
     vsPlayer: (arg) => {
-      let intergize = arg.map((x) => parseInt(x));
       dispatch(newGame());
-      dispatch(versusPlayer(...intergize));
+      dispatch(versusPlayer(arg));
     },
   };
 }

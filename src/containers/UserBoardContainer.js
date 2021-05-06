@@ -7,6 +7,7 @@ function mapStateToProps(state) {
     userBoard: state.userBoard.board,
     userSelected: state.userSelected,
     hints: state.userBoard.hints,
+    pegColors: state.pegColors,
   };
 }
 

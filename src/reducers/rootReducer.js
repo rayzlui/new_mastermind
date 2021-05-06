@@ -10,6 +10,7 @@ import { scoreReducer } from "./scoreReducer";
 import { gameTypeReducer } from "./gameTypeReducer";
 import { versusModeReducer } from "./versusModeReducer";
 import { turnChangeReducer } from "./turnChangeReducer";
+import { pegColorsReducers } from "./pegColorsReducer";
 
 export const rootReducer = combineReducers({
   userBoard: userBoardReducer,
@@ -23,4 +24,5 @@ export const rootReducer = combineReducers({
   gameType: gameTypeReducer,
   isTwoPlayer: versusModeReducer,
   turnChange: turnChangeReducer,
+  pegColors: pegColorsReducers,
 });

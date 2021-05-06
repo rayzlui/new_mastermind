@@ -15,7 +15,7 @@ function mapDispatchToProps(dispatch) {
   return {
     submit: () => {
       let state = store.getState();
-      let codeCreated = state.userBoard.board;
+      let codeCreated = state.userBoard.board.slice();
       let numCount = codeCreated.reduce((acc, num) => {
         acc[num] = acc[num] + 1 || 1;
         return acc;

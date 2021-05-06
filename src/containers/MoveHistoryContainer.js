@@ -4,6 +4,7 @@ import { MoveHistory } from "../views/MoveHistory";
 function mapStateToProps(state) {
   return {
     previousMoves: state.moveHistory,
+    pegColors: state.pegColors,
   };
 }
 

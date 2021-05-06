@@ -3,6 +3,7 @@ import {
   VERSUS_COMPUTER,
   VERSUS_PLAYER,
   ADD_ANOTHER_TURN,
+  TIMED_MODE,
 } from "../actions/actionTypes";
 
 const intialState = {
@@ -34,6 +35,8 @@ export function advancedOptionsReducer(state = intialState, action) {
         turnsAllowed: action.turnsAllowed,
         timeAllowed: action.timeAllowed,
       });
+    case TIMED_MODE:
+      return Object.assign({}, state, { computer: true });
     case ADD_USER_MOVE:
       let turnsMade = state.turnsMade + 1;
       return Object.assign({}, state, { turnsMade: turnsMade });

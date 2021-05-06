@@ -5,16 +5,21 @@ import { CodeOptionsContainer } from "../../containers/CodeOptionsContainer";
 let UserBoardButton = styled.button`
   height: 9vw;
   width: 9vw;
-  background-color: ${(props) => (props.highlight ? "green" : "white;")};
+  background-color: ${(props) => props.color};
   font-size: 2vw;
   min-width: 40px;
   min-height: 40px;
-  border: ${(props) => (props.hasHint ? "red solid 2px" : null)};
+  border: ${(props) =>
+    props.hasHint
+      ? "red solid 4px"
+      : props.highlight
+      ? "green 5px solid"
+      : null};
 `;
 
 export function UserBoard(props) {
   let result = [];
-  let { userBoard, changeInputSpot, userSelected, hints } = props;
+  let { userBoard, changeInputSpot, userSelected, hints, pegColors } = props;
 
   for (let i = 0; i < userBoard.length; i++) {
     let hasHint = false;
@@ -28,6 +33,7 @@ export function UserBoard(props) {
         key={`userboard index ${i}`}
         onClick={hasHint ? null : () => changeInputSpot(i)}
         hasHint={hasHint}
+        color={userBoard[i] ? pegColors[userBoard[i]] : "white"}
       >
         {userBoard[i] || `Index ${i + 1}`}
       </UserBoardButton>
@@ -53,4 +59,5 @@ UserBoard.propTypes = {
   changeInputSpot: PropTypes.func,
   userSelected: PropTypes.number,
   hints: PropTypes.object,
+  pegColors: PropTypes.object,
 };
