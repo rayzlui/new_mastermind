@@ -1,7 +1,7 @@
 import {
   SET_SECRET_CODE,
   VERSUS_COMPUTER,
-  PLAYER_SET_SECRET_CODE,
+  START_PLAYER,
 } from "../actions/actionTypes";
 
 export function correctCodeReducer(state = null, action) {
@@ -9,7 +9,7 @@ export function correctCodeReducer(state = null, action) {
     case VERSUS_COMPUTER:
       return null;
     case SET_SECRET_CODE:
-    case PLAYER_SET_SECRET_CODE:
+    case START_PLAYER:
       return action.code_info;
     default:
       return state;

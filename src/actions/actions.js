@@ -18,7 +18,25 @@ import {
   TWO_PLAYER,
   TWO_PLAYER_CHANGE_TURN,
   TWO_PLAYER_UPDATE_SCORE,
+  START_PLAYER,
 } from "./actionTypes";
+
+import store from "../createStore";
+
+export function setUserCreatedCode() {
+  let state = store.getState();
+  let codeCreated = state.userBoard.board.slice();
+  let numCount = codeCreated.reduce((acc, num) => {
+    acc[num] = acc[num] + 1 || 1;
+    return acc;
+  }, {});
+
+  return {
+    type: START_PLAYER,
+    code_info: { code: codeCreated, countOfEachNum: numCount },
+    codeLength: codeCreated.length,
+  };
+}
 
 export function errorFetchingAPICode() {
   return { type: ERROR_GETTING_CODE };

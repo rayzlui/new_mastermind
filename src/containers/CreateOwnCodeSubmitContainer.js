@@ -1,7 +1,5 @@
 import { connect } from "react-redux";
-import { setCode } from "../actions/actions";
-import { START_PLAYER } from "../actions/actionTypes";
-import store from "../createStore";
+import { setUserCreatedCode } from "../actions/actions";
 import { SubmitButton } from "../views/buttons/SubmitButton";
 
 function mapStateToProps(state) {
@@ -14,14 +12,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     submit: () => {
-      let state = store.getState();
-      let codeCreated = state.userBoard.board.slice();
-      let numCount = codeCreated.reduce((acc, num) => {
-        acc[num] = acc[num] + 1 || 1;
-        return acc;
-      }, {});
-      dispatch(setCode({ code: codeCreated, countOfEachNum: numCount }));
-      dispatch({ type: START_PLAYER, codeLength: codeCreated.length });
+      dispatch(setUserCreatedCode());
     },
   };
 }
