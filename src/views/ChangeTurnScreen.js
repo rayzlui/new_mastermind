@@ -6,7 +6,7 @@ export function ChangeTurnScreen(props) {
   return (
     <section className={"intro_screen"}>
       <button onClick={startTurn}>
-        Start {isTwoPlayer.playerNumTurn} Turn
+        Start Player {isTwoPlayer.playerNumTurn} Turn
       </button>
     </section>
   );

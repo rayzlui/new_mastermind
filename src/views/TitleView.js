@@ -19,8 +19,8 @@ export function TitleView(props) {
       <section className={"mode_info"}>
         <ModeDisplayContainer />
         <ScoreContainer />
-        <CountdownTimerContainer />
         {players}
+        <CountdownTimerContainer />
       </section>
     );
   }
@@ -28,8 +28,8 @@ export function TitleView(props) {
     gameInfo = (
       <section className={"mode_info"}>
         <ModeDisplayContainer />
-        <TurnsRemainingContainer />
         {players}
+        <TurnsRemainingContainer />
       </section>
     );
   }

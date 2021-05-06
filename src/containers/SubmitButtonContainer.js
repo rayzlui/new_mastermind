@@ -36,7 +36,7 @@ function mapDispatchToProps(dispatch) {
         advancedOptions,
         isTwoPlayer,
       } = state;
-      let userBoardValues = Object.values(userBoard.board);
+      let userBoardValues = userBoard.board.slice();
       let { code, countOfEachNum } = correctCode;
       let checkAnswer = checkUserGuess(userBoardValues, code, countOfEachNum);
       let { red, white } = checkAnswer;
@@ -59,7 +59,6 @@ function mapDispatchToProps(dispatch) {
         if (gameType === CLASSIC_MODE) {
           if (checkAnswer.red === userBoardValues.length) {
             previousMove["correctGuess"] = true;
-            dispatch(actionUserMoveToHistory(previousMove));
             dispatch(gameWon());
           } else {
             if (turnsAllowed - turnsMade === 1) {
@@ -72,8 +71,9 @@ function mapDispatchToProps(dispatch) {
             dispatch(versusComputer(codeLength, codeOptions));
             previousMove["correctGuess"] = true;
           }
-          dispatch(actionUserMoveToHistory(previousMove));
         }
+
+        dispatch(actionUserMoveToHistory(previousMove));
       } else {
         if (gameType === CLASSIC_MODE) {
           if (checkAnswer.red === userBoardValues.length) {

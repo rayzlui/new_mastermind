@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { oneMoreChance } from "../actions/actions";
+import { addExtraTurn } from "../actions/actions";
 import { GameOverView } from "../views/GameOverView";
 
 function mapStateToProps(state) {
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToState(dispatch) {
   return {
-    oneMoreChance: () => dispatch(oneMoreChance()),
+    oneMoreChance: () => dispatch(addExtraTurn()),
   };
 }
 

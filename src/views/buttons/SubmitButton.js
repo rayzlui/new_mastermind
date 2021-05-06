@@ -34,7 +34,7 @@ export function SubmitButton(props) {
   }
   return (
     <button onClick={handleClick} className={"game_options"}>
-      Submit Answer
+      Submit
     </button>
   );
 }

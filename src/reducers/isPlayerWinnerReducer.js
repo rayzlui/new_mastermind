@@ -3,8 +3,8 @@ import {
   GAME_LOST,
   VERSUS_PLAYER,
   VERSUS_COMPUTER,
-  ONE_MORE_CHANCE,
   CHANGE_MODE,
+  ADD_ANOTHER_TURN,
 } from "../actions/actionTypes";
 
 export function isPlayerWinnerReducer(state = null, action) {
@@ -15,7 +15,7 @@ export function isPlayerWinnerReducer(state = null, action) {
       return false;
     case VERSUS_PLAYER:
     case VERSUS_COMPUTER:
-    case ONE_MORE_CHANCE:
+    case ADD_ANOTHER_TURN:
     case CHANGE_MODE:
       return null;
     default:

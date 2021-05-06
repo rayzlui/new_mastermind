@@ -3,7 +3,6 @@ import {
   VERSUS_COMPUTER,
   VERSUS_PLAYER,
   ADD_ANOTHER_TURN,
-  ONE_MORE_CHANCE,
 } from "../actions/actionTypes";
 
 const intialState = {
@@ -39,7 +38,6 @@ export function advancedOptionsReducer(state = intialState, action) {
       let turnsMade = state.turnsMade + 1;
       return Object.assign({}, state, { turnsMade: turnsMade });
     case ADD_ANOTHER_TURN:
-    case ONE_MORE_CHANCE:
       let addTurn = state.turnsAllowed + action.turns;
       return Object.assign({}, state, { turnsAllowed: addTurn });
     default:

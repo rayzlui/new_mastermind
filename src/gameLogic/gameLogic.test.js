@@ -20,6 +20,25 @@ describe("checkUserGuess", () => {
     expect(runAltCheck.red).toEqual(3);
     expect(runAltCheck.white).toEqual(0);
   });
+  it("should return 3 red, 0 white", () => {
+    let correctAnswer = new Array(6);
+    let userGuess = [4, 4, 4, 4, 4, 4];
+    let correctAnswerReference = { 0: 3, 4: 3 };
+    let runCheckFunction = checkUserGuess(
+      userGuess,
+      correctAnswer,
+      correctAnswerReference
+    );
+    let runAltCheck = altCheckUserGuess(
+      userGuess,
+      correctAnswer,
+      correctAnswerReference
+    );
+    expect(runCheckFunction.redPegs).toEqual(3);
+    expect(runCheckFunction.whitePegs).toEqual(0);
+    expect(runAltCheck.red).toEqual(3);
+    expect(runAltCheck.white).toEqual(0);
+  });
   it("should return 0 red, 0 white", () => {
     let correctAnswer = [0, 0, 0, 0, 0, 0];
     let userGuess = [4, 4, 4, 4, 4, 4];

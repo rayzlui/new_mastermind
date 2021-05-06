@@ -1,9 +1,7 @@
 import {
-  UNSELECT_INPUT_SPOT,
   ADD_ANOTHER_TURN,
   NEW_GAME,
   CORRECT_GUESS,
-  ONE_MORE_CHANCE,
   ERROR_GETTING_CODE,
   SET_LOADING_SCREEN,
   SET_SECRET_CODE,
@@ -50,10 +48,6 @@ export function selectInputSpot(index) {
   return { type: SELECT_INPUT_SPOT, index: index };
 }
 
-export function unselectInputSpot(index) {
-  return { type: UNSELECT_INPUT_SPOT, index };
-}
-
 export function actionUserMoveToHistory(move) {
   return { type: ADD_USER_MOVE, move: move };
 }
@@ -98,9 +92,6 @@ export function gameLost() {
 
 export function addExtraTurn(turns = 1) {
   return { type: ADD_ANOTHER_TURN, turns };
-}
-export function oneMoreChance(turns = 1) {
-  return { type: ONE_MORE_CHANCE, turns };
 }
 
 export function updateScore() {

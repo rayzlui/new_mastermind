@@ -3,10 +3,10 @@ import { hintRequested } from "../actions/actions";
 import store from "../createStore";
 import { HintButton } from "../views/buttons/HintButton";
 
-function handleHintGivenLogic(correct, currentGuess, previousGivenHints) {
+function handleHintGivenLogic(correct, previousGivenHints) {
   //previousGiven hints === hash, others === array
 
-  for (let i = 0; i < currentGuess.length; i++) {
+  for (let i = 0; i < correct.length; i++) {
     if (previousGivenHints[i] === undefined) {
       return [i, correct[i]];
     }
@@ -26,8 +26,8 @@ function mapDispatchToProps(dispatch) {
       let state = store.getState();
       let { userBoard, correctCode } = state;
       let { code } = correctCode;
-      let { hints, board } = userBoard;
-      let newHint = handleHintGivenLogic(code, board, hints);
+      let { hints } = userBoard;
+      let newHint = handleHintGivenLogic(code, hints);
       dispatch(hintRequested(newHint[0], newHint[1]));
     },
   };
