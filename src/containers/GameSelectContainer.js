@@ -42,11 +42,11 @@ function mapDispatchToProps(dispatch) {
       }
       if (computer) {
         dispatch(
-          versusComputer(codeLength, codeOptions, turnsAllowed, timeAllowed)
+          versusComputer([codeLength, codeOptions, turnsAllowed, timeAllowed])
         );
       } else {
         dispatch(
-          versusPlayer(codeLength, codeOptions, turnsAllowed, timeAllowed)
+          versusPlayer([codeLength, codeOptions, turnsAllowed, timeAllowed])
         );
       }
     },

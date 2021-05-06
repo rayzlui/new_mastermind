@@ -1,17 +1,6 @@
 import { connect } from "react-redux";
 import { hintRequested } from "../actions/actions";
-import store from "../createStore";
 import { HintButton } from "../views/buttons/HintButton";
-
-function handleHintGivenLogic(correct, previousGivenHints) {
-  //previousGiven hints === hash, others === array
-
-  for (let i = 0; i < correct.length; i++) {
-    if (previousGivenHints[i] === undefined) {
-      return [i, correct[i]];
-    }
-  }
-}
 
 function mapStateToProps(state) {
   return {
@@ -23,12 +12,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     requestHint: () => {
-      let state = store.getState();
-      let { userBoard, correctCode } = state;
-      let { code } = correctCode;
-      let { hints } = userBoard;
-      let newHint = handleHintGivenLogic(code, hints);
-      dispatch(hintRequested(newHint[0], newHint[1]));
+      dispatch(hintRequested());
     },
   };
 }

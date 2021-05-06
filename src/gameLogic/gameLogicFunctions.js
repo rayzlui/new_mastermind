@@ -66,3 +66,13 @@ export function checkUserGuess(userAnswer, correctAnswer, countOfEachNum) {
   }
   return { red: red, white: white };
 }
+
+export function handleHintGivenLogic(correct, previousGivenHints) {
+  //previousGiven hints === hash, others === array
+
+  for (let i = 0; i < correct.length; i++) {
+    if (previousGivenHints[i] === undefined) {
+      return [i, correct[i]];
+    }
+  }
+}

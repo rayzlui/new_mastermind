@@ -21,6 +21,8 @@ import {
   START_PLAYER,
 } from "./actionTypes";
 
+import { handleHintGivenLogic } from "../gameLogic/gameLogicFunctions";
+
 import store from "../createStore";
 
 export function setUserCreatedCode() {
@@ -114,7 +116,12 @@ export function newGame() {
   return { type: NEW_GAME };
 }
 
-export function hintRequested(index, value) {
+export function hintRequested() {
+  let state = store.getState();
+  let { userBoard, correctCode } = state;
+  let { code } = correctCode;
+  let { hints } = userBoard;
+  let [index, value] = handleHintGivenLogic(code, hints);
   return { type: HINT_GIVEN, hint: { index: index, value: value } };
 }
 
