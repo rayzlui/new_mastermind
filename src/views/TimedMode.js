@@ -1,10 +1,10 @@
 import React from "react";
 import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { UserBoardContainer } from "../containers/UserBoardContainer";
-import { SubmitButtonContainer } from "../containers/SubmitButtonContainer";
 import { HintButtonContainer } from "../containers/HintButtonContainer";
 import { PropTypes } from "prop-types";
 import { ChangeTurnContainer } from "../containers/ChangeTurnContainer";
+import { TimedModeSubmitContainer } from "../containers/TimedModeSubmitContainer";
 
 export function TimedMode(props) {
   let { turnChange } = props;
@@ -21,7 +21,7 @@ export function TimedMode(props) {
           <UserBoardContainer />
         </section>
         <section className={"code_submit"}>
-          <SubmitButtonContainer />
+          <TimedModeSubmitContainer />
           <HintButtonContainer />
         </section>
       </section>
