@@ -6,7 +6,7 @@ import {
   VERSUS_PLAYER,
 } from "../actions/actionTypes";
 
-export function userSelectedReducer(state = null, action) {
+export function selectedIndexReducer(state = null, action) {
   switch (action.type) {
     case SELECT_INPUT_SPOT:
       return action.index;
