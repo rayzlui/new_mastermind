@@ -2,8 +2,6 @@ import {
   ADD_ANOTHER_TURN,
   NEW_GAME,
   CORRECT_GUESS,
-  ERROR_GETTING_CODE,
-  SET_LOADING_SCREEN,
   SET_SECRET_CODE,
   CODE_SIZE_SELECTED,
   USER_INPUT,
@@ -23,11 +21,8 @@ import {
 
 import { handleHintGivenLogic } from "../gameLogic/gameLogicFunctions";
 
-import store from "../createStore";
-
-export function setUserCreatedCode() {
-  let state = store.getState();
-  let codeCreated = state.userBoard.board.slice();
+export function setUserCreatedCode(userBoard) {
+  let codeCreated = userBoard.board.slice();
   let numCount = codeCreated.reduce((acc, num) => {
     acc[num] = acc[num] + 1 || 1;
     return acc;
@@ -40,16 +35,8 @@ export function setUserCreatedCode() {
   };
 }
 
-export function errorFetchingAPICode() {
-  return { type: ERROR_GETTING_CODE };
-}
-
 export function setCode(code_info) {
   return { type: SET_SECRET_CODE, code_info: code_info };
-}
-
-export function loadingScreen() {
-  return { type: SET_LOADING_SCREEN };
 }
 
 export function codeSizeSelected(size) {
@@ -72,8 +59,8 @@ export function actionUserMoveToHistory(move) {
   return { type: ADD_USER_MOVE, move: move };
 }
 
-export function versusPlayer(arg) {
-  let intergize = arg.map((x) => parseInt(x));
+export function versusPlayer(options) {
+  let intergize = options.map((x) => parseInt(x));
   let [codeLength, codeOptions, turnsAllowed, timeAllowed] = intergize;
   return {
     type: VERSUS_PLAYER,
@@ -84,8 +71,8 @@ export function versusPlayer(arg) {
   };
 }
 
-export function versusComputer(arg) {
-  let intergize = arg.map((x) => parseInt(x));
+export function versusComputer(options) {
+  let intergize = options.map((x) => parseInt(x));
   let [codeLength, codeOptions, turnsAllowed, timeAllowed] = intergize;
   return {
     type: VERSUS_COMPUTER,
@@ -116,11 +103,7 @@ export function newGame() {
   return { type: NEW_GAME };
 }
 
-export function hintRequested() {
-  let state = store.getState();
-  let { userBoard, correctCode } = state;
-  let { code } = correctCode;
-  let { hints } = userBoard;
+export function hintRequested(hints, code) {
   let [index, value] = handleHintGivenLogic(code, hints);
   return { type: HINT_GIVEN, hint: { index: index, value: value } };
 }
@@ -140,7 +123,7 @@ export function changeTurn() {
 export function twoPlayerAddScore(playerNum, playerScore) {
   return {
     type: TWO_PLAYER_UPDATE_SCORE,
-    playerNum: playerNum,
+    playerNum: `player${playerNum}`,
     playerScore: playerScore,
   };
 }
