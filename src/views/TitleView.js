@@ -44,5 +44,5 @@ export function TitleView(props) {
 TitleView.propTypes = {
   gameType: PropTypes.string,
   gameStatus: PropTypes.bool,
-  numPlayers: PropTypes.object,
+  numPlayers: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
 };
