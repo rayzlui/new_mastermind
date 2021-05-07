@@ -1,7 +1,8 @@
 import {
   ADD_USER_MOVE,
-  NEW_GAME,
+  CHANGE_MODE,
   TWO_PLAYER_CHANGE_TURN,
+  VERSUS_COMPUTER,
 } from "../actions/actionTypes";
 
 export function moveHistoryReducer(state = [], action) {
@@ -10,9 +11,9 @@ export function moveHistoryReducer(state = [], action) {
       let newState = state.slice();
       newState.push(action.move);
       return newState;
-
-    case NEW_GAME:
     case TWO_PLAYER_CHANGE_TURN:
+    case VERSUS_COMPUTER:
+    case CHANGE_MODE:
       return [];
     default:
       return state;
