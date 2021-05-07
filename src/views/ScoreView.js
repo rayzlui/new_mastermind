@@ -6,12 +6,21 @@ export function ScoreView(props) {
   let showScore = score;
   if (isTwoPlayer) {
     showScore =
-      isTwoPlayer.playerNumTurn === 1 ? isTwoPlayer[1] : isTwoPlayer[2];
+      isTwoPlayer.playerNumTurn === 1
+        ? isTwoPlayer.player1
+        : isTwoPlayer.player2;
   }
-  return <p>Score: {showScore}</p>;
+  return (
+    <p>
+      Score:{" "}
+      <span key={showScore} className={"score_view"}>
+        {showScore}
+      </span>
+    </p>
+  );
 }
 
 ScoreView.propTypes = {
   score: PropTypes.number,
-  isTwoPlayer: PropTypes.object,
+  isTwoPlayer: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };

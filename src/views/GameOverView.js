@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { CLASSIC_MODE, TIMED_MODE } from "../actions/actionTypes";
-import { GameSelectContainer } from "../containers/GameSelectContainer";
 import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { ScoreContainer } from "../containers/ScoreContainer";
 import { PropTypes } from "prop-types";
+import { GameOptionsContainer } from "../containers/GameOptionsContainer";
 
 export function GameOverView(props) {
   let { winner, showCode, oneMoreChance, gameType, isTwoPlayer } = props;
@@ -12,10 +12,10 @@ export function GameOverView(props) {
   let playAgainButton = newGame ? null : (
     <button onClick={() => toggleNewGame(!newGame)}>Play Again?</button>
   );
-  let gameSelect = newGame ? <GameSelectContainer /> : null;
+  let gameSelect = newGame ? <GameOptionsContainer /> : null;
   if (isTwoPlayer) {
-    let score1 = isTwoPlayer[1];
-    let score2 = isTwoPlayer[2];
+    let score1 = isTwoPlayer.player1;
+    let score2 = isTwoPlayer.player2;
     let moveCounts = (
       <>
         <p>Player 1: {score1} </p>
