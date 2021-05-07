@@ -6,7 +6,6 @@ import {
   setTwoPlayer,
 } from "../actions/actions";
 import { SET_SCREEN_CHANGE } from "../actions/actionTypes";
-import store from "../createStore";
 import { AdvancedOptionsView } from "../views/AdvancedOptionsView";
 
 function mapStateToProps(state) {
@@ -18,23 +17,41 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    vsComputer: (arg) => {
-      let state = store.getState();
-      if (state.isTwoPlayer) {
-        dispatch(setTwoPlayer());
-      }
+    startComputer: (arg) => {
       dispatch(newGame());
       dispatch(versusComputer(arg));
       dispatch({ type: SET_SCREEN_CHANGE });
     },
-    vsPlayer: (arg) => {
+    startPlayer: (arg) => {
       dispatch(newGame());
       dispatch(versusPlayer(arg));
+    },
+    startTwoPlayer: () => {
+      dispatch(setTwoPlayer());
+    },
+  };
+}
+
+function mergeProps(mapStateToProps, mapDispatchToProps) {
+  let { gameType, isTwoPlayer } = mapStateToProps;
+  let { startComputer, startPlayer, startTwoPlayer } = mapDispatchToProps;
+  return {
+    gameType,
+    isTwoPlayer,
+    vsComputer: (args) => {
+      startComputer(args);
+      if (isTwoPlayer) {
+        startTwoPlayer();
+      }
+    },
+    vsPlayer: (args) => {
+      startPlayer(args);
     },
   };
 }
 
 export const AdvancedOptionsContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(AdvancedOptionsView);

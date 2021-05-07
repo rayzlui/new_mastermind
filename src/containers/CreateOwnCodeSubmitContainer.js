@@ -6,18 +6,33 @@ function mapStateToProps(state) {
   return {
     numbersGuessed: state.userBoard.numbersGuessed,
     codeLength: state.advancedOptions.codeLength,
+    userBoard: state.userBoard,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    setPlayerCode: (board) => {
+      console.log(board);
+      dispatch(setUserCreatedCode(board));
+    },
+  };
+}
+
+function mergeProps(mapStateToProps, mapDispatchToProps) {
+  let { userBoard, numbersGuessed, codeLength } = mapStateToProps;
+  let { setPlayerCode } = mapDispatchToProps;
+  return {
+    numbersGuessed,
+    codeLength,
     submit: () => {
-      dispatch(setUserCreatedCode());
+      setPlayerCode(userBoard);
     },
   };
 }
 
 export const CreateOwnCodeSubmitContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(SubmitButton);
