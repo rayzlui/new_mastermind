@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import { setTwoPlayer, versusComputer, versusPlayer } from "../actions/actions";
 import { GameOptionsView } from "../views/buttons/GameOptionsView";
-import store from "../createStore";
 import { SET_SCREEN_CHANGE } from "../actions/actionTypes";
 
 function mapStateToProps(state) {
   return {
     winner: state.winner,
+    isTwoPlayer: state.isTwoPlayer,
+    advancedOptions: state.advancedOptions,
   };
 }
 
@@ -16,16 +17,15 @@ function mapDispatchToProps(dispatch) {
       dispatch(versusComputer([4, 8, 10, 4]));
       dispatch({ type: SET_SCREEN_CHANGE });
     },
-    playAgain: () => {
-      let state = store.getState();
+    playAgain: (options) => {
       let {
         computer,
         codeLength,
         codeOptions,
         turnsAllowed,
         timeAllowed,
-      } = state.advancedOptions;
-      if (state.isTwoPlayer) {
+      } = options.advancedOptions;
+      if (options.isTwoPlayer) {
         dispatch({ type: SET_SCREEN_CHANGE });
         dispatch(setTwoPlayer());
       }
@@ -41,7 +41,20 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
+
+function mergeProps(mapStateToProps, mapDispatchToProps) {
+  let { winner, isTwoPlayer, advancedOptions } = mapStateToProps;
+  let { quickPlay, playAgain } = mapDispatchToProps;
+  return {
+    winner: winner,
+    quickPlay: () => quickPlay(),
+    playAgain: () => {
+      playAgain({ isTwoPlayer, advancedOptions });
+    },
+  };
+}
 export const GameOptionsContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(GameOptionsView);
