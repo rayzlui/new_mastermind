@@ -111,3 +111,20 @@ button:hover{
   position: relative;
 
 }
+
+@keyframes score_animate {
+  from {color: orange;}
+  to {color: white;}
+
+  from {border: 2px solid orange} 
+  to {border: 0px}
+
+  from {background-color: white;}
+  to {background-color: inherit;}
+}
+
+.score_view{
+  color: white;
+  animation-name: score_animate;
+  animation-duration: 5s;
+}
