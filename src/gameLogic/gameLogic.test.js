@@ -4,7 +4,7 @@ import {
   checkUserGuess,
 } from "./gameLogicFunctions";
 
-describe("checkmockUserGuess", () => {
+describe("checkUserGuess", () => {
   it("should return 3 red, 0 white", () => {
     let mockCorrectAnswer = [0, 4, 0, 4, 0, 4];
     let mockUserGuess = [4, 4, 4, 4, 4, 4];

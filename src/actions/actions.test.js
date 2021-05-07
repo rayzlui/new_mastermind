@@ -1,12 +1,24 @@
 import {
+  actionUserMoveToHistory,
+  codeSizeSelected,
   hintRequested,
+  selectInputSpot,
+  setCode,
   setUserCreatedCode,
+  twoPlayerAddScore,
+  userInput,
   versusComputer,
   versusPlayer,
 } from "./actions";
 import {
+  ADD_USER_MOVE,
+  CODE_SIZE_SELECTED,
   HINT_GIVEN,
+  SELECT_INPUT_SPOT,
+  SET_SECRET_CODE,
   START_PLAYER,
+  TWO_PLAYER_UPDATE_SCORE,
+  USER_INPUT,
   VERSUS_COMPUTER,
   VERSUS_PLAYER,
 } from "./actionTypes";
@@ -157,5 +169,61 @@ describe("hintRequested", () => {
     let { index, value } = hint;
     expect(index).toEqual(5);
     expect(value).toEqual(14);
+  });
+});
+
+describe("setCode", () => {
+  it("should return object", () => {
+    let mockCodeInfo = {
+      code: [2, 4, 3, 6, 3, 4, 5],
+      countOfEachNum: { 2: 1, 3: 2, 4: 2, 5: 1, 6: 1 },
+    };
+    let action = setCode(mockCodeInfo);
+    expect(action.code_info).toEqual(mockCodeInfo);
+    expect(action.type).toEqual(SET_SECRET_CODE);
+  });
+});
+
+describe("codeSizeSelected", () => {
+  it("should return object", () => {
+    let action = codeSizeSelected(7);
+    expect(action.size).toEqual(7);
+    expect(action.type).toEqual(CODE_SIZE_SELECTED);
+  });
+});
+
+describe("userInput", () => {
+  it("should return object", () => {
+    let action = userInput(3, 6);
+    expect(action.selectedCodeIndex).toEqual(3);
+    expect(action.codeInput).toEqual(6);
+    expect(action.type).toEqual(USER_INPUT);
+  });
+});
+
+describe("selectInputSpot", () => {
+  it("should return object", () => {
+    let action = selectInputSpot(4);
+    expect(action.index).toEqual(4);
+    expect(action.type).toEqual(SELECT_INPUT_SPOT);
+  });
+});
+
+describe("actionUserMoveToHistory", () => {
+  it("should return object", () => {
+    let mockPreviousMove = [2, 3, 5, 7];
+    let move = { redPegs: 4, whitePegs: 0, previousMove: mockPreviousMove };
+    let action = actionUserMoveToHistory(move);
+    expect(action.move).toEqual(move);
+    expect(action.type).toEqual(ADD_USER_MOVE);
+  });
+});
+
+describe("twoPlayerAddScore", () => {
+  it("should return object", () => {
+    let action = twoPlayerAddScore(2, 6);
+    expect(action.playerNum).toEqual("player2");
+    expect(action.playerScore).toEqual(6);
+    expect(action.type).toEqual(TWO_PLAYER_UPDATE_SCORE);
   });
 });
