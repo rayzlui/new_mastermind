@@ -2,7 +2,7 @@ import React from "react";
 import { CLASSIC_MODE, TIMED_MODE } from "../../actions/actionTypes";
 import store from "../../createStore";
 
-export function IntroScreenView() {
+export function GameModeSelectView() {
   return (
     <section className={"intro_screen"}>
       <button
