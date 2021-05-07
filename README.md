@@ -3,7 +3,7 @@
 # Installation
 If you would like to play Mastermind without installing it locally visit:
 
-
+https://rayzlui.github.io/new_mastermind/
 
 Since this app is built with Javascript and React, it will need NodeJS to run. Please download NodeJS from here if you need it:
 
@@ -28,6 +28,8 @@ Once that is complete, also in the command line type:
 
 npm start 
 
+or:
+
 yarn start
 
 and it should load up and run on your preferred web browser. You are ready to play!
@@ -37,7 +39,7 @@ and it should load up and run on your preferred web browser. You are ready to pl
 At the start you are given two options: Single Player and Two Player. 
 
 ### Single Player:
-You will play against the computer. Winning means getting the code correct before your turns is up.
+You will play against the computer. Winning means getting the code correct before your turn is up.
 
 ### Two Player:
 You will against another player on the same computer. It will be turn based. A score is kept for each player's turn.
@@ -66,7 +68,7 @@ This will change the current game mode, ie if you are in classic mode, it will g
 ## Gameplay:
 To create your code, click a button/index under "My Guess". Once you click it, you an options display will appear. Click on the button of the option you would like to enter in that location. Once an option a selected, the options display will disappear. You may change your code as often as you would like, by clicking on the button/index in your guess.
 
-Press the submit button when you want to check if your code is correct. Note: the submit button will not work if your code isn't completely filled out. You can keep clicking it, but it won't do much (or maybe it will if you keep pressing it). 
+Click the submit button when you want to check if your code is correct. Note: the submit button will not work if your code isn't completely filled out. You can keep clicking it, but it won't do much (or maybe it will if you keep pressing it). 
 
 Once the code is submitted, you will either:
 
@@ -79,10 +81,10 @@ You may click the hint button to receive a correct number in a correct location.
 
 Once you receive a hint, you will not be able to change the value in that location (not sure why you would want to). 
 
-Hints are limited to the the hidden code length - 2. Because, you need to get at least two yourself.
+Hints are limited to the hidden code length - 2. Because, you need to get at least two yourself.
 
 ### Add Turn Button:
-In classic mode, there will be an add turn button. It will add another chance for you to guess the hidden code. This button will also appear if you had lost the game. Just in case you were so close to getting it.
+In classic mode, there will be an addTurn button. It will add another chance for you to guess the hidden code. This button will also appear if you had lost the game. Just in case you were so close to getting it.
 
 ## Game Over:
 Once the game ends, you will shown your move history, along with if you won or lost. Additionally, in classic mode, you will be given the option to see what the hidden code was, if you please. You will also be given the option to play again. Clicking the play again button will give you three options. Run it back will restart the game based on exactly the same mode/code length/code options length/time/turns you have just finished. Advanced options will allow you to change the code length/code options/time/turns, but will be the same game mode (ie classic or timed). Change mode will change the game mode. If you want to switch from one player to two player or vice versa, please refresh the page.
@@ -111,12 +113,12 @@ I could store the codes as a string, as an array or as a hash. So I thought of t
 
 As a String:
   Positives:
-    - Easy to check if user submitted answer is correct by using Javascripts string comparison.
+    - Easy to check if user submitted answer is correct by using Javascript’s string comparison.
   Negatives:
     - Could have false positives in string comparison if we decide to allow larger secret code lengths i.e:
       secretCode = 11 1 11 1 11 1
       userCode =   1 11 1 11 1 11
-      Althought we could store it as a string with commas between each number
+      Although we could store it as a string with commas between each number
     - Strings are immutable, so user inputs would rely on typing out on keyboard (which would make future extensions such as using images  impossible) or creating a new string each time there's a user input via buttons. Users would not be able to make mistakes in their inputs with buttons either (ie, cant change location 2 after inputting 4 code values), or at least it would be much more difficult for us the build that functionality.
 
 As a Array:
@@ -128,11 +130,11 @@ As a Array:
   
 As a Hash:
   Positives:
-    - Same as array
+    - Same as array.
   Negatives:
-    - Same as array
+    - Same as array.
 
-Since strings were going to make a worse user experience and/or be harder to work with, I eliminated it from contention. In terms of how I was planning to use them, arrays and hashes had similar positives and negatives. I chose arrays because I felt like it would be easier to work with due to the ability of looking up by index (which is an abstraction of what we want to accomplish when we want to allow users to change their code at a certain index). It felt more inituitive. Plus, Javascript arrays have a lot more built in methods than Javascript Object/Hashmap.
+Since strings were going to make a worse user experience and/or be harder to work with, I eliminated it from contention. In terms of how I was planning to use them, arrays and hashes had similar positives and negatives. I chose arrays because I felt like it would be easier to work with due to the ability of looking up by index (which is an abstraction of what we want to accomplish when we want to allow users to change their code at a certain index). It felt more intuitive. Plus, Javascript arrays have a lot more built in methods than Javascript Object/Hashmap.
 
 Once I settled on using arrays as the code storages, I worked out the check function. We needed our check function to provide feedback (correct + inlocation aka correct2x and correct+notinlocation aka correct1x). So we decided to store the number of correct + in location and correct + not in location in hash (we could do an array as well, but having strong key names made it easier to work with ie check['correct2x'] is easier than check[0]). 
 
@@ -142,7 +144,7 @@ My initial check function was brute force. I would make a copy of the correctCod
   correctCode = [1,2,3,4,5,6,7,8,9]
   userCode =    [9,8,7,6,5,4,3,2,1]
 
-it would run at O(n + summation(n)).
+It would run at O(n + summation(n)).
 
 
 I decided to add a hash that stored the number of times a number appears in the correctCode. This would allow us to check for correct numbers but incorrect order easier. So now in the instance of:
@@ -161,8 +163,8 @@ To retrieve the code from Random Number Generator API, I used Javascript's fetch
 ## 2. Setting up working skeleton
 
 With the "core" of Mastermind planned out, I started working on the way a user could input their guess. I came up with two ideas:
-  1. Type into an input
-  2. Buttons
+  1. Type into an input.
+  2. Buttons.
 
 I chose buttons because it would allow usage of code options that aren't numbers ie images. It also felt more user friendly as users can click on which index in their code they wanted to change rather than having to backspace delete and rewrite portions of their code.
 
@@ -199,14 +201,14 @@ The user board are also buttons, when clicked runs a function that updates the u
 
 The submit button, which handles most of the games logic. When a user clicks submit, it does the following:
 
-  1. Adds the current move into move history
-  2. Checks if the answer is correct
-    - If it's correct updates the winner state to true
-    - If it's incorrect, checks how many turns are left
-      - If there are no turns left, updates winner state to false
-  3. Deducts a turn from turns left
-  4. Clears the userboard
-  5. Clears userSelected
+  1. Adds the current move into move history.
+  2. Checks if the answer is correct.
+    - If it's correct updates the winner state to true.
+    - If it's incorrect, checks how many turns are left.
+      - If there are no turns left, updates winner state to false.
+  3. Deducts a turn from turns left.
+  4. Clears the userboard.
+  5. Clears userSelected.
 
 My logic behind having all of this logic in the submit button is because this is the moment when the user has completed their code and is ready for checking. It also means their userboard can be reset.
 
@@ -233,14 +235,14 @@ class Mastermind
       - updates userSelected state with received input
     
     function clickHandler submitButton
-      - runs the check code function with userCode and correctCode
-        - if correct, updates winner state with true
+      - runs the check code function with userCode and correctCode.
+        - if correct, updates winner state with true.
         - if incorrect:
-          - if no turns left updates winner state with false
-      - updates moveHistory state with currentMove
+          - if no turns left updates winner state with false.
+      - updates moveHistory state with currentMove.
       - updates turn state by subtracting 1.
-      - updates userBoard state to empty array
-      - updates userSelected state to null
+      - updates userBoard state to empty array.
+      - updates userSelected state to null.
 
 
   render
@@ -363,67 +365,67 @@ So now as I moved to adding extensions, I would only need to add to a specific r
 ### 1. Allow user to create own secret code
 
 The first extension I thought of was allowing a user to enter a secret code for another to guess. To implement this:
-  1. Added an extra reducer/state that stores if vs computer (the original mode) or vs player(what I'm implementing)
-  2. Added two new actions that would update the new reducer called computer with vs computer or vs player (receives boolean, true if vs computer, false if vs player)
-  3. Create game status reducer
-    - Will be true if game should be on
-    - Will be false while player is deciding vsPlayer or vsComputer
-  4. Created two new buttons, one to select vs computer and one to select vs player 
-    - They are passed their corresponding action
-    - vsComputer button will also deploy action starting game
-  5. Shifted the middleware that obtain the secret code to run when vs computer is selected
-    - This would be the same action that updated new reducer with vs computer
-  6. Created two new components (and corresponding containers) that each composed userboard and submit button
+  1. Added an extra reducer/state that stores if vs computer (the original mode) or vs player(what I'm implementing).
+  2. Added two new actions that would update the new reducer called computer with vs computer or vs player (receives boolean, true if vs computer, false if vs player).
+  3. Create game status reducer.
+    - Will be true if game should be on.
+    - Will be false while player is deciding vsPlayer or vsComputer.
+  4. Created two new buttons, one to select vs computer and one to select vs player.
+    - They are passed their corresponding action.
+    - vsComputer button will also deploy action starting game.
+  5. Shifted the middleware that obtain the secret code to run when vs computer is selected.
+    - This would be the same action that updated new reducer with vs computer.
+  6. Created two new components (and corresponding containers) that each composed userboard and submit button.
     - One would run how it originally would (henceforth known as UserInput Component).
-    - One would allow the player to create a code (henceforth known as PlayerCreateCode Component)
-    - Both are more or less the same except what is passed to the submit button
-      - Submit button original would perform orginal task of checking + updating userboard + userselected
-      - New submit button would receive action that would store secret code using the current userboard inputs
-        - Store secret code action would run as it originally did, except with a secret code from different source
-        - Submit button will deploy action starting game
-  7. Pass the new reducer/state to the root view component (henceforth known as Mastermind component)
-    - Add logic in the root view component that would use new reducer to decide if it should show the PlayerCreateCode component or UserInput component
+    - One would allow the player to create a code (henceforth known as PlayerCreateCode Component).
+    - Both are more or less the same except what is passed to the submit button.
+      - Submit button original would perform original task of checking + updating userboard + userselected.
+      - New submit button would receive action that would store secret code using the current userboard inputs.
+        - Store secret code action would run as it originally did, except with a secret code from different source.
+        - Submit button will deploy action starting game.
+  7. Pass the new reducer/state to the root view component (henceforth known as Mastermind component).
+    - Add logic in the root view component that would use new reducer to decide if it should show the PlayerCreateCode component or UserInput component.
 
 ### 2. Countdown Timer
 
 The second extension was a countdown timer. To implement this:
-  1. Created a new component (CountdownTimer) that stores the countdown timer
-    - Component has local state, that would represent the time remaining
-    - Component would have an interval timer that deducted from the local state every second
-    - Component would display local state is a time form
-  2. Create new reducer (timeAllowed) that contain the time allowed
-    - This would be combined with the computer reducer to from an advanced option reducer
+  1. Created a new component (CountdownTimer) that stores the countdown timer.
+    - Component has local state, that would represent the time remaining.
+    - Component would have an interval timer that deducted from the local state every second.
+    - Component would display local state is a time form.
+  2. Create new reducer (timeAllowed) that contain the time allowed.
+    - This would be combined with the computer reducer to from an advanced option reducer.
   3. Created a container that passed the following to CountdownTimer:
     - State: timeAllowed
     - Functions: endGame
       - endGame would be a gameLost action because this function would run only when time has run out meaning the user has lost.
-  4. Update root app to display CountdownTimer
+  4. Update root app to display CountdownTimer.
     - Add logic for it to display CountdownTimer only when game status is still playing.
 
 ### 3. User selected difficulties
 
-The third extenson was allowing user to select the secret code length, how many options the secret code is created out of, amount of turns they had and the amount of time they had. To implement this:
+The third extension was allowing user to select the secret code length, how many options the secret code is created out of, amount of turns they had and the amount of time they had. To implement this:
   1. Updated fetch call to Random Generator API to handle dynamic inputs
   2. Create new reducers, codeLength, codeOptions. 
     - Combined this into advanced options.
     - Moved turns reducer in advanced options, renamed turnsAllowed.
-  3. Create new actions to would set codeLength, codeOptions, turnsAllowed, timeAllowed.
-  4. Create new component (AdvancedOptions) that would be the user interface for selecting the advance options
-    - Component would contain 8 html inputs, 2 inputs each to select reducers, codeLength, codeOptions and turnsAllowed
+  3. Create new actions to set codeLength, codeOptions, turnsAllowed, timeAllowed.
+  4. Create new component (AdvancedOptions) that would be the user interface for selecting the advance options.
+    - Component would contain 8 html inputs, 2 inputs each to select reducers, codeLength, codeOptions and turnsAllowed.
       - Two input types are a number input and range bar.
-      - Number input would tie together with range bar input so user to see what they've selected
-    - Component would contain 4 local states that represented the input values from the html inputs
-  5. Update vsComputer and vsPlayer actions to accept new parameters 
-  6. Update userBoard reducer to create dynamic userBoard size based on vsComputer and vsPlayer action
-  7. Create a container that would pass the following to AdvancedOptions component
+      - Number input would tie together with range bar input so user to see what they've selected.
+    - Component would contain 4 local states that represented the input values from the html inputs.
+  5. Update vsComputer and vsPlayer actions to accept new parameters.
+  6. Update userBoard reducer to create dynamic userBoard size based on vsComputer and vsPlayer action.
+  7. Create a container that would pass the following to AdvancedOptions component:
     - State: none
     - Functions:
-      - vsComputer would run vsComputer action with input parameters
-      - vsPlayer would run vsPlayer action with input parameters
+      - vsComputer would run vsComputer action with input parameters.
+      - vsPlayer would run vsPlayer action with input parameters.
   8. Create two new buttons
     - One button is quickplay, it would start the game with original difficulty parameters.
-    - One button would allow toggle displaying advanced options component
-  9. Wrap new buttons and new component in a GameSelect component
+    - One button would allow toggle displaying advanced options component.
+  9. Wrap new buttons and new component in a GameSelect component.
   10. Create a container for the GameSelect component that passed:
     - State: none
     - Functions: 
@@ -431,90 +433,90 @@ The third extenson was allowing user to select the secret code length, how many 
   
 ### 4. End of Game Extensions
 
-The fourth extensions I added revolved around actions that can be taken when the game is over. In this extension I added a way for users the view the secret code, add an extra turn if they lost, restart the game with same conditions or new conditions
+The fourth extensions I added revolved around actions that can be taken when the game is over. In this extension I added a way for users the view the secret code, add an extra turn if they lost, restart the game with same conditions or new conditions.
 
 
 #### 4.1 View Secret Code
   
 To implement a view secret code at game over:
-  1. Passed the correctCode state into the GameOver component
-  2. Created a local state in GameOver component that determined if secret code should be shown
-  3. Created a button that when clicked would toggle local state displaying secret code
+  1. Passed the correctCode state into the GameOver component.
+  2. Created a local state in GameOver component that determined if secret code should be shown.
+  3. Created a button that when clicked would toggle local state displaying secret code.
 
 #### 4.2 Add Extra Turn
 
 To implement an extra turn button:
-  1. Created a button component
-  2. Create action that would increase turn
-  3. Update advancedOptions reducer that would increase turns from new action
-  4. Update gameStatus reducer to false from new action
-  5. Update winner reducer to false from new action
+  1. Created a button component.
+  2. Create action that would increase turn.
+  3. Update advancedOptions reducer that would increase turns from new action.
+  4. Update gameStatus reducer to false from new action.
+  5. Update winner reducer to false from new action.
 
 #### 4.3 Play Again
 
 To implement play again:
-  1. Created a local state in GameOver component that accepted boolean to determine if player wanted to play again
-  2. Created a button that would toggle play again state
-  3. Add GameSelect component into GameOver component
-  4. Add logic that would display GameSelect component depending on local state of play again
+  1. Created a local state in GameOver component that accepted boolean to determine if player wanted to play again.
+  2. Created a button that would toggle play again state.
+  3. Add GameSelect component into GameOver component.
+  4. Add logic that would display GameSelect component depending on local state of play again.
   5. Passed winner state data into GameSelect container that determined if the game had a winner or loser or null. 
-    - Used logic to determine actions of buttons
-  6. Passed new function into GameSelect container that would allow user to play again with same game conditions
-    - This function would replace QuickPlay as Play Again, in situations where there was a winner or loser
-    - Quickplay would remain the same as previous if no winner or loser
+    - Used logic to determine actions of buttons.
+  6. Passed new function into GameSelect container that would allow user to play again with same game conditions.
+    - This function would replace QuickPlay as Play Again, in situations where there was a winner or loser.
+    - Quickplay would remain the same as previous if no winner or loser.
     - Advanced Options button renamed to Change Options, but action remains the same.
 
 ### 5 Hint Button
 
 The fifth extension I added was a hint button. To implement hint button:
-  1. Update userboard reducer with hint and hintCount (in case I wanted to limit the amount of hints)
-    - I set the hint storage as a hash, in case of wanting to give a random index as a hint
-    - Update board reset section of userboard reducer to not delete the hint hash
+  1. Update userboard reducer with hint and hintCount (in case I wanted to limit the amount of hints).
+    - I set the hint storage as a hash, in case of wanting to give a random index as a hint.
+    - Update board reset section of userboard reducer to not delete the hint hash.
   2. Create a function that would compare current hints and correctCode and finds the first index that was not a key in hints. It returns the index along with the value at correctCode[index]. 
-  3. Create a hint button
-  4. Create an action that would update hint and hintCount value
+  3. Create a hint button.
+  4. Create an action that would update hint and hintCount value.
   5. Attached above function and action to hint button. Result from function would be passed to action.
-  6. Updated userboard component to handle hints
+  6. Updated userboard component to handle hints.
     - Buttons whose indexes that received hints would be displayed with a red border and users can not click on it.
-  7. Updated userboard container to pass hint state
+  7. Updated userboard container to pass hint state.
 
 
 ### 6 Separate Timed Mode and Classic Mode
 
 The sixth extension I added was splitting timed mode from classic mode. To implement:
 
-  1. Create new reducer/state (gameType) that determine which mode is being played
-  2. Created two actions to set either Timed Mode or Classic Mode
-  3. Create two buttons with above action
-  4. Create IntroScreen Component, that stored the two buttons
+  1. Create new reducer/state (gameType) that determine which mode is being played.
+  2. Created two actions to set either Timed Mode or Classic Mode.
+  3. Create two buttons with above action.
+  4. Create IntroScreen Component, that stored the two buttons.
   2. Create two new components, ClassicMode and TimedMode that were compositions of:
-      Both receieve:
+      Both receive:
       - MoveHistory Component
       - UserBoard Component
       - SubmitButton Component
       - HintRequested Component
       ClassicMode:
       - Add Turn Component
-  3. Create score reducer for timed mode
-  4. Create actions to update score for timed mode
-  5. Create score component to display score for timed mode
+  3. Create score reducer for timed mode.
+  4. Create actions to update score for timed mode.
+  5. Create score component to display score for timed mode.
   6. Updated root component:
-    - Addded IntroScreen compopnent
-      - Add logic that would display this component 
-    - Added ClassicMode and TimedMode components, removed old user board
-    - Added logic to display ClassicMode or TimedMode depending on new reducer/state
-    - To display CountdownTimer only when new reducer/state is timed mode
+    - Added IntroScreen component.
+      - Add logic that would display this component .
+    - Added ClassicMode and TimedMode components, removed old user board.
+    - Added logic to display ClassicMode or TimedMode depending on new reducer/state.
+    - To display CountdownTimer only when new reducer/state is timed mode.
   7. Updated Submit Button Container:
-    - Added logic to submit function to handle Classic Mode and Timed Mode
-      - Classic mode would run as previously
+    - Added logic to submit function to handle Classic Mode and Timed Mode.
+      - Classic mode would run as previously.
       - Timed mode will: 
         - Check if answer is correct 
           - If correct:
-            - Run a versusComputer action with current game difficulties as parameters 
-              - This creates another secret code for the user to continue playing
-            - Updates the score
-        - Adds move to moveHistory 
-  8. Timed mode game end logic is handled by CountdownTimer component
+            - Run a versusComputer action with current game difficulties as parameters.
+              - This creates another secret code for the user to continue playing.
+            - Updates the score.
+        - Adds move to moveHistory.
+  8. Timed mode game end logic is handled by CountdownTimer component.
 
 
 ### 7 Add Versus Mode
@@ -524,75 +526,81 @@ The seventh extension I added is a versus mode. Versus mode would allow two user
 To implement:
   1. Add reducer/state (versusModeReducer) that stores an object, is null or is false.
     - If two player, an object is stored with 1 and 2 representing their scores and a playerNumberTurn that decided chose turn it was
-    - If one player, false is stored, signifying no versus mode
-    - Initially set as null, meaning no decision had been made on one or two player
+    - If one player, false is stored, signifying no versus mode.
+    - Initially set as null, meaning no decision had been made on one or two player.
   2. Create four actions:
     - One Player:
-      - Sets versusModeReducer to false
+      - Sets versusModeReducer to false.
     - Two Player:
-      - Sets versusModeReducer to an object
+      - Sets versusModeReducer to an object.
     - Two Player Update Score
-      - Updates the score of a player
+      - Updates the score of a player.
     - Two Player Change Turn
       - Changes the turn of whose playing.
-  3. Create VersusMode component that has two buttons to allow player(s) to choose one player or two player
+  3. Create VersusMode component that has two buttons to allow player(s) to choose one player or two player.
     - Buttons deploy action one player or two player action from above.
-  4. Create turn change component
-    - Contains one button
-      - On click button deploys action to set turnChange to false
-    - Allows players to decide when they want to start their turn (necessary for timed mode)
+  4. Create turn change component.
+    - Contains one button.
+      - On click button deploys action to set turnChange to false.
+    - Allows players to decide when they want to start their turn (necessary for timed mode).
   4. Create a turn change reducer that stores a boolean. 
-     - Turn change reducer will tell the app if it needs to show a turn change component
-  5. Create two actions
-     - One sets turnChangeReducer to true
-     - One sets turnChangeReducer to false
+     - Turn change reducer will tell the app if it needs to show a turn change component.
+  5. Create two actions:
+     - One sets turnChangeReducer to true.
+     - One sets turnChangeReducer to false.
   6. Update Submit Button Container's submit function:
      - Separate logic to handle one player timed mode, one player classic mode, two player timed mode, two player classic mode.
-     - One player submits remained the same
+     - One player submits remained the same.
      - Two player submits added following:
       - Add state to know if it's player one's turn or player two's
         - If player one:
           - In classic mode:
             - Checks answer
               - If correct:
-                - Deploys action updating player one score
-                - Deploys action change turn action
-                - Deploys action generate new code
-                - Deploys action setting turnChange to true
-            - Deploys action adding move to moveHistory
+                - Deploys action updating player one score.
+                - Deploys action change turn action.
+                - Deploys action generate new code.
+                - Deploys action setting turnChange to true.
+            - Deploys action adding move to moveHistory.
           - In timed mode:
             - Checks answer
               - If correct:
-                - Deploys action generating new code
-                - Deploys action updating player one score
-            - Deploys action adding move to moveHistory
+                - Deploys action generating new code.
+                - Deploys action updating player one score.
+            - Deploys action adding move to moveHistory.
         - If player two:
           - In classic mode:
             - Checks answer
               - If correct: 
-                - Deploys action updating player two score
-                - Deploys action edning game
+                - Deploys action updating player two score.
+                - Deploys action ending game.
           - In timed mode:
-            - Similar to timed mode, updates player two score each time correct
-  7. Update ScoreView to display players score in timed mode
-  8. Update TitleView to display game mode, player turn
-  9. Update TurnsRemaining to display amount of turns player is taking
-  10. Update AddExtraTurnButton to not display during two player mode
-  11. Update Timed Mode and Classic Mode components to display Turn Change Component when turn change state is true
-  12. Update Root Component to show VersusMode if versusMode reducer is null
-  13. Update moveHistory reducer to reset moveHistory from a twoPlayerChangeTurn action (resets the move history for player two)
-  14. Update AdvanceOptions Component to not allow users to set their own code in two player mode
+            - Similar to timed mode, updates player two score each time correct.
+  7. Update ScoreView to display players score in timed mode.
+  8. Update TitleView to display game mode, player turn.
+  9. Update TurnsRemaining to display amount of turns player is taking.
+  10. Update AddExtraTurnButton to not display during two player mode.
+  11. Update Timed Mode and Classic Mode components to display Turn Change Component when turn change state is true.
+  12. Update Root Component to show VersusMode if versusMode reducer is null.
+  13. Update moveHistory reducer to reset moveHistory from a twoPlayerChangeTurn action (resets the move history for player two).
+  14. Update AdvanceOptions Component to not allow users to set their own code in two player mode.
   15. Update GameOverView to display winner and tie game situations.
   16. Update CountdownTimer:
-    - Add logic to handle countdown completition
+    - Add logic to handle countdown competition.
       - If the current player is player 1:
         - Deploys action to change turn
       - If player two or one player mode
         - Deploys end game
-    - Add logic to reset timer
-      - Passed turnChangeReducer state, if true will reset timer
-      - Also returns null (as to not display) when turnChangeReducer is true
+    - Add logic to reset timer.
+      - Passed turnChangeReducer state, if true will reset timer.
+      - Also returns null (as to not display) when turnChangeReducer is true.
     
+
+
+# Create React App Info Below:
+
+
+
 
 
 
@@ -667,3 +675,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
