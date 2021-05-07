@@ -19,6 +19,7 @@ export function CodeOptions(props) {
           userSelected !== null ? () => inputChoiceInto(userSelected, i) : null
         }
         color={pegColors[i]}
+        key={`code options ${i}`}
       >
         {i}
       </CodeOptionButtons>

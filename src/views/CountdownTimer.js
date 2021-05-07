@@ -47,7 +47,7 @@ export function CountdownTimer(props) {
 CountdownTimer.propTypes = {
   endGame: PropTypes.func,
   timeAllowed: PropTypes.number,
-  isTwoPlayer: PropTypes.object,
+  isTwoPlayer: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   changeTurn: PropTypes.func,
   turnChange: PropTypes.bool,
 };

@@ -13,7 +13,7 @@ export function ChangeTurnScreen(props) {
 }
 
 ChangeTurnScreen.propTypes = {
-  isTwoPlayer: PropTypes.object,
+  isTwoPlayer: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   turnChange: PropTypes.bool,
   startTurn: PropTypes.func,
 };

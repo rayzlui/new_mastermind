@@ -22,7 +22,7 @@ function randomPhraseGenerator(red, white, correct = false, random) {
   return store[random](red, white);
 }
 
-const PegDisplay = styled.div`
+const PegDisplay = styled.section`
   background-color: ${(props) => props.color};
   height: 25px;
   width: 25px;
@@ -33,7 +33,7 @@ const PegDisplay = styled.div`
 export function MoveHistory(props) {
   let { previousMoves, pegColors } = props;
   let display;
-  if (previousMoves) {
+  if (previousMoves.length > 0) {
     let history = [];
     for (let i = previousMoves.length - 1; i >= 0; i--) {
       let {
@@ -43,13 +43,14 @@ export function MoveHistory(props) {
         correctGuess,
         randomPhrase,
       } = previousMoves[i];
-      let pegsDisplay = moves.map((x) => {
-        return <PegDisplay key={i} color={pegColors[x]} />;
+      let pegsDisplay = moves.map((move, index) => {
+        return <PegDisplay key={`peg ${index}`} color={pegColors[move]} />;
       });
 
       history.push(
-        <p key={`move history ${i}`}>
+        <section key={`move history${i}`}>
           <h3>Move {moves.join(" | ")}</h3>
+          <p key={`move history ${i}`}></p>
           {pegsDisplay}
           <br />
           {randomPhraseGenerator(
@@ -58,12 +59,12 @@ export function MoveHistory(props) {
             correctGuess,
             randomPhrase
           )}
-        </p>
+        </section>
       );
     }
     display = history;
   } else {
-    display = null;
+    display = <p>Here is a brand new secret code! Start guessing!</p>;
   }
   return (
     <section id={"move_history_container"}>

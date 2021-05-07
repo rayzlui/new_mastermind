@@ -12,5 +12,5 @@ export function TurnsRemaining(props) {
 TurnsRemaining.propTypes = {
   turnsAllowed: PropTypes.number,
   turnsMade: PropTypes.number,
-  isTwoPlayer: PropTypes.object || PropTypes.bool,
+  isTwoPlayer: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
 };

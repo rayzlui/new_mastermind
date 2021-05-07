@@ -1,8 +1,6 @@
 import React from "react";
-import { GameSelectContainer } from "../containers/GameSelectContainer";
 import { PlayerCreateCodeView } from "./PlayerCreateCodeView";
 import { GameOverContainer } from "../containers/GameOverContainer";
-import { IntroScreenView } from "./buttons/IntroScreenView";
 import { VersusModeContainer } from "../containers/VersusButtonContainer";
 import { CLASSIC_MODE, TIMED_MODE } from "../actions/actionTypes";
 import PropTypes from "prop-types";
@@ -10,6 +8,8 @@ import {
   ClassicModeContainer,
   TimedModeContainer,
 } from "../containers/PlayModeContainers";
+import { GameOptionsContainer } from "../containers/GameOptionsContainer";
+import { GameModeSelectContainer } from "../containers/GameModeSelectContainer";
 
 export function Mastermind(props) {
   let { gameStatus, winner, versusComputer, gameType, isTwoPlayer } = props;
@@ -18,7 +18,7 @@ export function Mastermind(props) {
     return <VersusModeContainer />;
   }
   if (gameType === null) {
-    return <IntroScreenView />;
+    return <GameModeSelectContainer />;
   }
   let display;
   //if winner is not null, means game is over.
@@ -37,7 +37,7 @@ export function Mastermind(props) {
       //if game status is false, means we need to set up game.
       display = (
         <section className={"start_game_select"}>
-          <GameSelectContainer />
+          <GameOptionsContainer />
         </section>
       );
     }
