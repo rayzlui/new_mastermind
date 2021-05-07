@@ -1,37 +1,3 @@
-export function altCheckUserGuess(userAnswer, correctAnswer, countOfEachNum) {
-  //compare which indexes have the same num
-  //if not compare to reference to see if there are nums in other locations
-  let redPegs = 0;
-  let whitePegs = 0;
-  let incorrectCode = {};
-  let countUserGuess = {};
-  for (let i = 0; i < userAnswer.length; i++) {
-    let user = userAnswer[i];
-    let correct = correctAnswer[i];
-    if (user === correct) {
-      redPegs++;
-      countUserGuess[user] = countUserGuess[user] + 1 || 1;
-      //count pegs that were correctly guessed to avoid overcounting guessses not in right place
-    } else {
-      incorrectCode[user] = incorrectCode[user] + 1 || 1;
-    }
-  }
-  for (let guess in incorrectCode) {
-    let alreadyCountedPegs = countUserGuess[guess] || 0;
-    //these are pegs that were correctly guessed
-    if (alreadyCountedPegs < countOfEachNum[guess]) {
-      //if there are more pegs in correct code with this color
-      let difference = countOfEachNum[guess] - alreadyCountedPegs;
-      //get difference in how much of the color is remaining in correct code
-      whitePegs += Math.min(difference, incorrectCode[guess]);
-      //add the min between number of times user guess this color in the wrong place vs
-      //difference how many of these colors remain after removing the correct ones
-    }
-  }
-
-  return { redPegs: redPegs, whitePegs: whitePegs };
-}
-
 export function checkUserGuess(userAnswer, correctAnswer, countOfEachNum) {
   /*
   [0,4,0,4,0,4] correct
@@ -75,4 +41,21 @@ export function handleHintGivenLogic(correct, previousGivenHints) {
       return [i, correct[i]];
     }
   }
+}
+
+export function preprocessSubmit(state) {
+  let { correctCode, userBoard } = state;
+  let userBoardValues = userBoard.board.slice();
+  let { code, countOfEachNum } = correctCode;
+  let checkAnswer = checkUserGuess(userBoardValues, code, countOfEachNum);
+  let { red, white } = checkAnswer;
+  let previousMove = {
+    moves: userBoardValues,
+    redPegs: red,
+    whitePegs: white,
+  };
+  let usePhrase = Math.floor(Math.random() * 3);
+  previousMove["randomPhrase"] = usePhrase;
+
+  return { previousMove, state };
 }
