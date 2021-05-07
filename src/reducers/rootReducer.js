@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { userBoardReducer } from "./userBoardReducer";
-import { userSelectedReducer } from "./userSelectedIndex";
+import { selectedIndexReducer } from "./selectedIndexReducer";
 import { moveHistoryReducer } from "./moveHistoryReducer";
 import { correctCodeReducer } from "./correctCodeReducer";
 import { advancedOptionsReducer } from "./advancedOptionsReducer";
@@ -14,7 +14,7 @@ import { pegColorsReducers } from "./pegColorsReducer";
 
 export const rootReducer = combineReducers({
   userBoard: userBoardReducer,
-  userSelected: userSelectedReducer,
+  userSelected: selectedIndexReducer,
   moveHistory: moveHistoryReducer,
   correctCode: correctCodeReducer,
   advancedOptions: advancedOptionsReducer,
