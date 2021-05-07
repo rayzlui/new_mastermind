@@ -1,38 +1,131 @@
 .App {
   text-align: center;
+  display: inline-block;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+.container {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  display: grid;
+
+  grid-template-columns: 40% auto;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+section {
+  text-align: right;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.mode_info{
+  text-align: left;
+}
+
+
+.user_input{
+  padding-top: 5vh;
+}
+
+.code_select{
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.userboard_select_info{
+  width:9vw;
+  display: inline-block;
+  text-align: center;
+  overflow-x: scroll;
+  width:60vw;
+}
+
+.user_interaction{
+  height: 40vh;
+  width:60vw;
+}
+
+.code_options{
+  overflow: scroll;
+  white-space: normal;
+  position: relative;
+  height: 20vh;
+}
+
+.code_submit button {
+  height: 4vh;
+}
+
+.game_options{
+  height: 5vw;
+}
+
+button{
+  border-radius: 5px;
+  height: 4vw
+}
+.title{
+  padding-top: 42vh;
+  height: 7vh;
+  text-align: left;
+  color: lightgray;
+
+}
+
+.game_name{
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+.intro_screen, .start_game_select, .versus_mode_seletor{
+  padding-top: 42vh;
+}
+.gameover_view {
+  padding-top: 5vh;
+}
+
+button:hover{
+  background-color: black;
+  color: white;
+}
+.history_display{
+  padding-top: 50px;
+  overflow: scroll;
+
+  height: 23vh;
+}
+
+.move_history_title{
+  position: absolute;
+  height: 6vh;
+  background-color: whitesmoke;
+  top: 0;
+  right:0;
+  width: 100%
+}
+
+
+#move_history_container{
+  background-color: whitesmoke;
+  color: black;
+  height: 30vh;
+  border-radius: 0 0 0 5px;
+  position: relative;
+
+}
+
+@keyframes score_animate {
+  from {color: orange;}
+  to {color: white;}
+
+  from {border: 2px solid orange} 
+  to {border: 0px}
+
+  from {background-color: white;}
+  to {background-color: inherit;}
+}
+
+.score_view{
+  color: white;
+  animation-name: score_animate;
+  animation-duration: 5s;
 }

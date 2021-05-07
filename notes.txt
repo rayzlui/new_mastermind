@@ -1,0 +1,88 @@
+
+Things to do:
+
+proofread documentation //Do Thursday, May 4th
+
+write test for most views and reducers. //Do Thursday, Math 5th
+
+add pokeapi for sprites?
+  - add this in css or javascript?
+  - if javascript use inline styling from javascript and have obj storing sprites
+
+add giphy api to background?
+
+create VERSUS MODE 
+
+-two players playing vs computer
+-two rounds each, if draw after two rounds, first to lose, loses. just use timed mode for this, winner is higher score after a certain time.
+-use timed mode here too
+-classic mode ? => how many turns it took for each player to solve one code 
+-timed mode? => keep score, winner has most in time.
+
+
+
+maybe never gonna give you up each time they click?
+
+maybe try and make it like those three match games
+  - each time user inputs 1 correct, does 1 damage 
+  - 2 == 2 damage 
+  - heals each time you get wrong 
+  - can't win until all correct?
+
+
+MISC + ALREADY DONE BELOW:
+
+add hints where if one clicks hint button, we auto add a correct num into a user board?
+  - highlight userboard spot red to signify hinted
+  - or add to move history. 
+
+
+//states
+this.state = {
+  gameMode: 'computer',
+  remainingTurns: 10,
+  correctAnswer: null,
+  moveHistory: [],
+  selectedInput: undefined,
+  userBoard: {1: null, 2: null, 3: null, 4:null},
+  numsSelected: 0,
+  winner: false,
+}
+
+
+
+//from homescreen
+
+import store from '../createStore'
+
+store.dispatch({type: VERSUS_COMPUTER})
+
+import { VERSUS_COMPUTER } from '../actions/actionTypes'
+
+
+
+seperate timed mode and classic mode.
+  - time mode will be solve as many as you can in time given.
+  - classic will be turn based.
+
+
+allow player to select if they want to replay with same difficulties or change
+
+add highlight to selected index when they click on it so they know where entering code into.
+
+
+a bunch of css.
+  - common styling
+  - make colored pegs
+
+
+
+unincorporated ideas:
+
+THIS FEELS REDUNDANT. They are exactly the same thing, you have a certain amount of time to complete it. Except "timed" mode will score it.
+add turns into timed mode, so they'll lose score points if they don't get it right? 
+add time into classic mode
+call those challenge modes?
+  - need to add challenge into state 
+  - easy in timed, just track turns left, update score and trigger new code generator
+  - classic reimplment how it was previously built.
