@@ -1,18 +1,19 @@
 import React from "react";
-import { addExtraTurn } from "../../actions/actions";
-import store from "../../createStore";
+import { PropTypes } from "prop-types";
 
-export function AddExtraTurnButton() {
-  let state = store.getState();
-  if (state.isTwoPlayer) {
+export function AddExtraTurnButton(props) {
+  let { isTwoPlayer, addExtraTurn } = props;
+  if (isTwoPlayer) {
     return null;
   }
   return (
-    <button
-      onClick={() => store.dispatch(addExtraTurn())}
-      className={"game_options"}
-    >
+    <button onClick={() => addExtraTurn()} className={"game_options"}>
       Add Extra Turn?
     </button>
   );
 }
+
+AddExtraTurnButton.propTypes = {
+  isTwoPlayer: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  addExtraTurn: PropTypes.func,
+};

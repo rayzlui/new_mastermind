@@ -1,11 +1,11 @@
 import React from "react";
 import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { UserBoardContainer } from "../containers/UserBoardContainer";
-import { AddExtraTurnButton } from "./buttons/AddExtraTurnButton";
 import { HintButtonContainer } from "../containers/HintButtonContainer";
 import { ChangeTurnContainer } from "../containers/ChangeTurnContainer";
 import { PropTypes } from "prop-types";
 import { ClassicModeSubmit } from "../containers/ClassicModeSubmit";
+import { AddExtraTurnContainer } from "../containers/AddExtraTurnContainer";
 
 export function ClassicMode(props) {
   let { turnChange } = props;
@@ -23,7 +23,7 @@ export function ClassicMode(props) {
         <section className={"code_submit"}>
           <ClassicModeSubmit />
           <HintButtonContainer />
-          <AddExtraTurnButton />
+          <AddExtraTurnContainer />
         </section>
       </section>
     </>
