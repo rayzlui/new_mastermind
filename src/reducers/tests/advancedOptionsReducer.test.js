@@ -61,7 +61,7 @@ describe("advancedOptionsReducer", () => {
     expect(turnsMade).toEqual(2);
     expect(timeAllowed).toBeNull();
   });
-  it("should change initial", () => {
+  it("should change state to computer = false, codeLength = 4, codeOptions = 8, turnsAllowed = 10, turnsMade = 0", () => {
     const intialState = {
       computer: null,
       codeLength: null,
@@ -94,7 +94,7 @@ describe("advancedOptionsReducer", () => {
     expect(turnsMade).toEqual(0);
     expect(timeAllowed).toBeNull();
   });
-  it("should change initial", () => {
+  it("should change state to computer = false, codeLength = 14, codeOptions = 48, turnsAllowed = 50, turnsMade = 0, timeAllowed = null", () => {
     const intialState = {
       computer: false,
       codeLength: 4,
@@ -127,7 +127,7 @@ describe("advancedOptionsReducer", () => {
     expect(turnsMade).toEqual(0);
     expect(timeAllowed).toBeNull();
   });
-  it("should change initial", () => {
+  it("should change state to computer = true, codeLength = 4, codeOptions = 8, turnsAllowed = 10, turnsMade = 0, timeAllowed = 5", () => {
     const intialState = {
       computer: false,
       codeLength: 3,
@@ -161,7 +161,7 @@ describe("advancedOptionsReducer", () => {
     expect(timeAllowed).toEqual(5);
   });
 
-  it("should change initial", () => {
+  it("should change state to computer = true, codeLength = 7, codeOptions = 10, turnsAllowed = 8, turnsMade = 0, timeAllowed = 4", () => {
     const intialState = {
       computer: false,
       codeLength: 7,
@@ -189,7 +189,7 @@ describe("advancedOptionsReducer", () => {
     expect(turnsMade).toEqual(0);
     expect(timeAllowed).toEqual(4);
   });
-  it("should return change initial", () => {
+  it("should change state to computer = true, codeLength = 3, codeOptions = 6, turnsAllowed = 11, turnsMade = 0, timeAllowed = 2", () => {
     const intialState = {
       computer: null,
       codeLength: 3,
@@ -217,7 +217,7 @@ describe("advancedOptionsReducer", () => {
     expect(turnsMade).toEqual(0);
     expect(timeAllowed).toEqual(2);
   });
-  it("should change initial", () => {
+  it("should change state to computer = false, codeLength = 5, codeOptions = 11, turnsAllowed = 4, turnsMade = 1, timeAllowed = null", () => {
     const intialState = {
       computer: false,
       codeLength: 5,
@@ -245,7 +245,7 @@ describe("advancedOptionsReducer", () => {
     expect(turnsMade).toEqual(1);
     expect(timeAllowed).toBeNull();
   });
-  it("should change initial", () => {
+  it("should change state to computer = true, codeLength = 4, codeOptions = 11, turnsAllowed = 6, turnsMade = 1, timeAllowed = 3", () => {
     const intialState = {
       computer: true,
       codeLength: 4,

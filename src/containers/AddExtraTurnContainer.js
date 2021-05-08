@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addExtraTurn: () => dispatch(addExtraTurn),
+    addExtraTurn: () => dispatch(addExtraTurn()),
   };
 }
 

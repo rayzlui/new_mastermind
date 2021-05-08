@@ -4,8 +4,8 @@ import { HintButton } from "../views/buttons/HintButton";
 
 function mapStateToProps(state) {
   return {
-    hintCount: state.userBoard.hintCount,
-    hints: state.userBoard.hints,
+    hintCount: state.userBoard?.hintCount,
+    hints: state.userBoard?.hints,
     correctCode: state.correctCode?.code,
   };
 }

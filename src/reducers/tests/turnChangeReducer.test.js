@@ -12,13 +12,13 @@ describe("turnChangeReducer", () => {
     let reducer = turnChangeReducer(initialState, action);
     expect(reducer).toEqual(initialState);
   });
-  it("should change initial", () => {
+  it("should change state to false", () => {
     let initialState = true;
     let action = { type: START_TURN };
     let reducer = turnChangeReducer(initialState, action);
     expect(reducer).toEqual(false);
   });
-  it("should change initial", () => {
+  it("should change state to false", () => {
     let initialState = false;
     let action = { type: SET_SCREEN_CHANGE };
     let reducer = turnChangeReducer(initialState, action);

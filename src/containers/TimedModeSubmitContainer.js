@@ -72,8 +72,8 @@ function mapStateToProps(state) {
     isTwoPlayer,
   } = state;
   return {
-    numbersGuessed: userBoard.numbersGuessed,
-    codeLength: advancedOptions.codeLength,
+    numbersGuessed: userBoard?.numbersGuessed,
+    codeLength: advancedOptions?.codeLength,
     correctCode,
     gameType,
     userBoard,

@@ -12,7 +12,7 @@ describe("pegColorReducer", () => {
     let reducer = pegColorsReducers(initialState, action);
     expect(reducer).toEqual(initialState);
   });
-  it("should change initial", () => {
+  it("should create 7 strings, with no duplicates", () => {
     let initialState = null;
     let action = { type: VERSUS_COMPUTER, codeOptions: 7 };
     let reducer = pegColorsReducers(initialState, action);
@@ -27,7 +27,7 @@ describe("pegColorReducer", () => {
       count[currentPeg] = count[currentPeg] + 1 || 1;
     }
   });
-  it("should change initial", () => {
+  it("should create 4 new strings with no duplicates", () => {
     let initialState = ["rgb(222,223,222", "rgb(22,6,34)"];
     let action = { type: VERSUS_COMPUTER, codeOptions: 4 };
     let reducer = pegColorsReducers(initialState, action);
@@ -42,7 +42,7 @@ describe("pegColorReducer", () => {
       count[currentPeg] = count[currentPeg] + 1 || 1;
     }
   });
-  it("should change initial", () => {
+  it("should create 7 new strings with no duplicates each containing rbg", () => {
     let initialState = null;
     let action = { type: VERSUS_PLAYER, codeOptions: 7 };
     let reducer = pegColorsReducers(initialState, action);

@@ -5,7 +5,7 @@ function mapStateToProps(state) {
   return {
     gameStatus: state.gameStatus,
     winner: state.winner,
-    versusComputer: state.advancedOptions.computer,
+    versusComputer: state.advancedOptions?.computer,
     gameType: state.gameType,
     isTwoPlayer: state.isTwoPlayer,
   };

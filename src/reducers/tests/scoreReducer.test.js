@@ -12,13 +12,13 @@ describe("scoreReducer", () => {
     let reducer = scoreReducer(initialState, action);
     expect(reducer).toEqual(initialState);
   });
-  it("should change intial", () => {
+  it("should change state to 3", () => {
     let initialState = 2;
     let action = { type: CORRECT_GUESS };
     let reducer = scoreReducer(initialState, action);
     expect(reducer).toEqual(3);
   });
-  it("should change intial", () => {
+  it("should change state to 0", () => {
     let initialState = 2;
     let action = { type: NEW_GAME };
     let reducer = scoreReducer(initialState, action);

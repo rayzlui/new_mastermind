@@ -4,8 +4,8 @@ import { SubmitButton } from "../views/buttons/SubmitButton";
 
 function mapStateToProps(state) {
   return {
-    numbersGuessed: state.userBoard.numbersGuessed,
-    codeLength: state.advancedOptions.codeLength,
+    numbersGuessed: state.userBoard?.numbersGuessed,
+    codeLength: state.advancedOptions?.codeLength,
     userBoard: state.userBoard,
   };
 }

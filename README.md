@@ -9,7 +9,7 @@ Since this app is built with Javascript and React, it will need NodeJS to run. P
 
 https://nodejs.org/en/download/
 
-This app was built with NodeJS version v10.15.3. If you are having issues running this app, please verify your NodeJS version.
+This app was built with NodeJS version v10.15.3, but should work on v16.1.0. If you are having issues running this app, please verify your NodeJS version.
 
 
 First thing is you have to clone the app! You can do that by typing the following in your command line:

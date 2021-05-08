@@ -5,7 +5,7 @@ import { userInput } from "../actions/actions";
 function mapStateToProps(state) {
   return {
     userSelected: state.userSelected,
-    gameSize: state.advancedOptions.codeOptions,
+    gameSize: state.advancedOptions?.codeOptions,
     pegColors: state.pegColors,
   };
 }
