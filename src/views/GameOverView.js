@@ -88,7 +88,7 @@ export function GameOverView(props) {
         </section>
       </>
     );
-  } else if (gameType === TIMED_MODE) {
+  } else {
     return (
       <>
         <section className={"gameover_view"}>
