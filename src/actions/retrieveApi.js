@@ -13,13 +13,16 @@ export async function getRandomNumbers(size, range) {
     let receivedString = await response.text();
     let numArray = [];
     let countOfEachNum = {};
+    let currentNum = "";
     for (let i = 0; i < receivedString.length; i++) {
-      let currentNum = receivedString[i];
-      let stringToInt = parseInt(currentNum);
-      if (!isNaN(stringToInt)) {
-        //avoid line breaks
+      let currentChar = receivedString[i];
+      if (!isNaN(parseInt(currentChar))) {
+        currentNum += currentChar;
+      } else {
+        let stringToInt = parseInt(currentNum);
         numArray.push(stringToInt);
         countOfEachNum[stringToInt] = countOfEachNum[stringToInt] + 1 || 1;
+        currentNum = "";
       }
     }
     store.dispatch(setCode({ code: numArray, countOfEachNum: countOfEachNum }));
