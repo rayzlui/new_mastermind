@@ -5,7 +5,7 @@ import { GameOverView } from "../views/GameOverView";
 function mapStateToProps(state) {
   return {
     winner: state.winner,
-    showCode: state.correctCode.code,
+    showCode: state.correctCode?.code,
     gameType: state.gameType,
     isTwoPlayer: state.isTwoPlayer,
   };

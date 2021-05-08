@@ -4,9 +4,9 @@ import { UserBoard } from "../views/buttons/UserBoard";
 
 function mapStateToProps(state) {
   return {
-    userBoard: state.userBoard.board,
+    userBoard: state.userBoard?.board,
     userSelected: state.userSelected,
-    hints: state.userBoard.hints,
+    hints: state.userBoard?.hints,
     pegColors: state.pegColors,
   };
 }
