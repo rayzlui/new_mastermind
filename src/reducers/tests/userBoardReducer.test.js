@@ -20,7 +20,7 @@ describe("userBoardReducer", () => {
     let reducer = userBoardReducer(intialState, action);
     expect(reducer).toEqual(intialState);
   });
-  it("should change initial", () => {
+  it("should change state to {numbersGuessed: 0, board: [0,0,0,0]}, hints: {}, hintCount: 0", () => {
     let initialState = {
       numbersGuessed: 4,
       board: [3, 4, 3, 2],
@@ -33,10 +33,13 @@ describe("userBoardReducer", () => {
     let { numbersGuessed, board, hints, hintCount } = reducer;
     expect(numbersGuessed).toEqual(0);
     expect(board.length).toEqual(action.codeLength);
+    for (let i = 0; i < board.length; i++) {
+      expect(board[i]).toEqual(0);
+    }
     expect(Object.entries(hints).length).toEqual(0);
     expect(hintCount).toEqual(0);
   });
-  it("should change initial", () => {
+  it("should change state to {numbersGuessed:0 ,board: [0,0,0,0], hints: {}, hintCounts:0}", () => {
     let initialState = {
       numbersGuessed: 4,
       board: [3, 4, 3, 2],
@@ -49,10 +52,13 @@ describe("userBoardReducer", () => {
     let { numbersGuessed, board, hints, hintCount } = reducer;
     expect(numbersGuessed).toEqual(0);
     expect(board.length).toEqual(action.codeLength);
+    for (let i = 0; i < board.length; i++) {
+      expect(board[i]).toEqual(0);
+    }
     expect(Object.entries(hints).length).toEqual(0);
     expect(hintCount).toEqual(0);
   });
-  it("should change initial", () => {
+  it("should change state to {numbersGuessed:0 ,board: [0,0,0,0,0,0,0,0], hints: {}, hintCounts:0}", () => {
     let mockBoard = [3, 4, 3, 2, 9, 0, 0, 0];
     let initialState = {
       numbersGuessed: 5,
@@ -69,7 +75,7 @@ describe("userBoardReducer", () => {
     expect(Object.entries(hints).length).toEqual(0);
     expect(hintCount).toEqual(0);
   });
-  it("should change initial", () => {
+  it("should change state to {numbersGuessed:5 ,board: [3, 4, 3, 9, 9, 0, 0, 0], hints: {0: 3}, hintCounts:1}", () => {
     let mockBoard = [3, 4, 3, 2, 9, 0, 0, 0];
     let initialState = {
       numbersGuessed: 5,
@@ -93,7 +99,7 @@ describe("userBoardReducer", () => {
       }
     }
   });
-  it("should change initial", () => {
+  it("should change state to {numbersGuessed:6 ,board: [3, 4, 3, 2, 9, 0, 0, 6], hints: {0: 3}, hintCounts:1}", () => {
     let mockBoard = [3, 4, 3, 2, 9, 0, 0, 0];
     let initialState = {
       numbersGuessed: 5,
@@ -117,7 +123,7 @@ describe("userBoardReducer", () => {
       }
     }
   });
-  it("should change initial", () => {
+  it("should change state to {numbersGuessed:5 ,board: [3, 8, 3, 9, 9, 0, 0, 0], hints: {0: 3, 1: 8}, hintCounts:2}", () => {
     let mockBoard = [3, 4, 3, 2, 9, 0, 0, 0];
     let initialState = {
       numbersGuessed: 5,
@@ -142,7 +148,7 @@ describe("userBoardReducer", () => {
       }
     }
   });
-  it("should change initial", () => {
+  it("should change state to {numbersGuessed:3 ,board: [3, 5, 0, 0, 9, 0, 0, 0], hints: {0: 3, 1:5}, hintCounts:2}", () => {
     let mockBoard = [3, 0, 0, 0, 9, 0, 0, 0];
     let initialState = {
       numbersGuessed: 2,
