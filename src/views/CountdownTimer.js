@@ -39,6 +39,7 @@ export function CountdownTimer(props) {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endGame, changeTurn, isTwoPlayer, turnChange]);
 
   return <p>Time Remaining: {`${remainingTime}`}</p>;

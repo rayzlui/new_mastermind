@@ -4,6 +4,7 @@ import { MoveHistoryContainer } from "../containers/MoveHistoryContainer";
 import { ScoreContainer } from "../containers/ScoreContainer";
 import { PropTypes } from "prop-types";
 import { GameOptionsContainer } from "../containers/GameOptionsContainer";
+import Confetti from "react-confetti";
 
 export function GameOverView(props) {
   let { winner, showCode, oneMoreChance, gameType, isTwoPlayer } = props;
@@ -67,16 +68,18 @@ export function GameOverView(props) {
       : // eslint-disable-next-line react/jsx-key
         [null, <button onClick={() => showAnswer(true)}>Show Answer</button>];
     let isWinner = winner ? (
-      <h1>You win :(</h1>
+      <h1>You win :]</h1>
     ) : (
       <>
         <h1>You lose :)</h1>
         <button onClick={oneMoreChance}>One More Chance</button>
       </>
     );
+    let confetti = winner ? <Confetti /> : null;
     return (
       <>
         <section className={"gameover_view"}>
+          {confetti}
           <h1>Game Over!</h1>
           <h3>You Played Classic Mode</h3>
           {isWinner}
