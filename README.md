@@ -107,6 +107,8 @@ I began by listing the essentials of what we need in the app.
     - We need turn limit to deduct each time we check code.
   - We need to store history of moves
 
+
+### Structuring The Mastermind Code
 My initial thought was to get the checking portion done first, as I believe it's the "core" of this app. But I realized how we stored the codes would make a difference in the "check if answer is correct" portion. So I analyzed how we should store the codes first and the effects they would have on our check function and our user interactions.
 
 I could store the codes as a string, as an array or as a hash. So I thought of the positives and negatives of each one.
@@ -136,7 +138,9 @@ As a Hash:
 
 Since strings were going to make a worse user experience and/or be harder to work with, I eliminated it from contention. In terms of how I was planning to use them, arrays and hashes had similar positives and negatives. I chose arrays because I felt like it would be easier to work with due to the ability of looking up by index (which is an abstraction of what we want to accomplish when we want to allow users to change their code at a certain index). It felt more intuitive. Plus, Javascript arrays have a lot more built in methods than Javascript Object/Hashmap.
 
-Once I settled on using arrays as the code storages, I worked out the check function. We needed our check function to provide feedback (correct + inlocation aka correct2x and correct+notinlocation aka correct1x). So we decided to store the number of correct + in location and correct + not in location in hash (we could do an array as well, but having strong key names made it easier to work with ie check['correct2x'] is easier than check[0]). 
+
+### Creating The Check Function
+Once I settled on using arrays as the code storages, I worked out the check function. We needed our check function to provide feedback (correct + in location aka correct2x and correct+notinlocation aka correct1x). So we decided to store the number of correct + in location and correct + not in location in hash (we could do an array as well, but having strong key names made it easier to work with ie check['correct2x'] is easier than check[0]). 
 
 So it looked like this: feedback = {correct2x: 0, correct1x: 0}, correct2x being correct num and correct location, whilst correct1x being correct num only. (I ended up using redPegs and whitePegs due to familiarity the terms with the board game version of Mastermind).
 
